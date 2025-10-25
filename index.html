@@ -8,41 +8,104 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: Arial, sans-serif; 
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 20px;
             line-height: 1.6;
         }
         header { 
-            background: #1a73e8; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white; 
-            padding: 30px; 
+            padding: 40px; 
             text-align: center;
             border-radius: 8px;
             margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         h1 { font-size: 2.5em; margin-bottom: 10px; }
         .content { 
             background: white; 
-            padding: 30px; 
+            padding: 40px; 
             border-radius: 8px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        h2 { color: #1a73e8; margin: 20px 0 10px 0; }
+        h2 { 
+            color: #667eea; 
+            margin: 30px 0 20px 0; 
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
         p { margin: 10px 0; color: #333; }
-        .section { margin: 30px 0; padding: 20px; background: #f9f9f9; border-left: 4px solid #1a73e8; }
+        .section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            background: #f9f9f9; 
+            border-left: 4px solid #667eea; 
+            border-radius: 4px;
+        }
         button { 
-            background: #1a73e8; 
+            background: #667eea; 
             color: white; 
-            padding: 10px 20px; 
+            padding: 12px 24px; 
             border: none; 
             border-radius: 4px; 
             cursor: pointer;
             margin: 10px 5px 10px 0;
             font-size: 1em;
+            transition: background 0.3s;
         }
-        button:hover { background: #0d47a1; }
+        button:hover { background: #764ba2; }
+
+        /* Team Styles */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .team-member {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        .team-member h3 {
+            font-size: 1.3em;
+            margin: 15px 0 5px 0;
+        }
+        .team-member .role {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        .team-member .bio {
+            font-size: 0.85em;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+        .avatar {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        ul { margin-left: 20px; }
+        li { margin: 8px 0; }
+        .footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            color: #999; 
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -52,22 +115,26 @@
     </header>
 
     <div class="content">
+        <!-- Mission Section -->
         <div class="section">
             <h2>🎯 Mission</h2>
             <p>Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring mit Datenschutz an erster Stelle.</p>
             <p>Kontaktlose Gesundheitsüberwachung ohne Kameras - nur mit Wi-Fi Signalen!</p>
         </div>
 
+        <!-- Was wir machen Section -->
         <div class="section">
             <h2>💡 Was wir machen</h2>
-            <ul style="margin-left: 20px;">
+            <ul>
                 <li>Innovative Wi-Fi Sensing Technologie</li>
                 <li>Datenschutz-fokussierte Lösungen</li>
                 <li>Intelligente Vitalmonitoring Systeme</li>
                 <li>Zuverlässige und sichere Technologie</li>
+                <li>Einfache Integration für Partner</li>
             </ul>
         </div>
 
+        <!-- Features Section -->
         <div class="section">
             <h2>🌟 Features</h2>
             <p><strong>Kontaktlos:</strong> Keine Wearables oder Kameras erforderlich</p>
@@ -76,20 +143,71 @@
             <p><strong>Überall:</strong> Funktioniert überall mit Wi-Fi</p>
         </div>
 
-        <div class="section">
-            <h2>📧 Kontakt</h2>
-            <p>Interessiert an HAVENIS AI?</p>
-            <button onclick="alert('Kontaktformular wird geladen...')">Nachricht senden</button>
-            <button onclick="alert('Website wird geladen...')">Mehr erfahren</button>
+        <!-- Team Section -->
+        <h2>👥 Unser Team</h2>
+        <p style="margin-bottom: 20px;">HAVENIS AI wird von einem leidenschaftlichen Team von Experten gegründet:</p>
+
+        <div class="team-container">
+            <div class="team-member">
+                <div class="avatar">👨‍💼</div>
+                <h3>Co-Founder & CEO</h3>
+                <div class="role">Vision & Strategie</div>
+                <div class="bio">Führt HAVENIS mit innovativer Vision und unternehmerischem Spirit</div>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar">👨‍🔬</div>
+                <h3>CTO & Lead Engineer</h3>
+                <div class="role">Technologie & Entwicklung</div>
+                <div class="bio">Entwickelt die revolutionäre Wi-Fi Sensing Technologie</div>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar">👩‍💻</div>
+                <h3>AI/ML Specialist</h3>
+                <div class="role">Machine Learning</div>
+                <div class="bio">Entwickelt intelligente Algorithmen für präzise Messungen</div>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar">👨‍⚕️</div>
+                <h3>Healthcare Advisor</h3>
+                <div class="role">Medizinische Expertise</div>
+                <div class="bio">Stellt sicher, dass unsere Lösung medizinische Standards erfüllt</div>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar">👩‍⚖️</div>
+                <h3>Legal & Compliance</h3>
+                <div class="role">Datenschutz & Regulierung</div>
+                <div class="bio">Navigiert komplexe regulatorische Anforderungen</div>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar">🤝</div>
+                <h3>Business Development</h3>
+                <div class="role">Partnerships & Growth</div>
+                <div class="bio">Baut strategische Partnerschaften auf und treibt Wachstum</div>
+            </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px; color: #999; font-size: 0.9em;">
-            <p>© 2025 HAVENIS AI | Test Version</p>
+        <!-- Kontakt Section -->
+        <div class="section" style="background: #e8f0fe; border-left-color: #667eea;">
+            <h2>📧 Kontakt & Interesse</h2>
+            <p>Interessiert an HAVENIS AI oder möchtest mehr über unsere Technologie erfahren?</p>
+            <button onclick="alert('Email: kontakt@havenis-ai.de\nWir freuen uns auf deine Nachricht!')">📧 Email senden</button>
+            <button onclick="alert('Besuche unsere Website für mehr Informationen!')">🌐 Website</button>
+            <button onclick="alert('Folge uns für Updates!')">📱 Social Media</button>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 HAVENIS AI | Revolutionizing Health Monitoring with Wi-Fi Sensing</p>
+            <p>Made with ❤️ by the HAVENIS AI Team</p>
         </div>
     </div>
 
     <script>
-        console.log("HAVENIS AI Website geladen!");
+        console.log("🚀 HAVENIS AI Website aktiv!");
     </script>
 </body>
 </html>
