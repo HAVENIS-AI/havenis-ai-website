@@ -1,195 +1,95 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAVENIS AI Pitchdeck</title>
-<link rel="stylesheet" href="/havenis-ai-website/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAVENIS AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        header { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 30px; 
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .content { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 { color: #1a73e8; margin: 20px 0 10px 0; }
+        p { margin: 10px 0; color: #333; }
+        .section { margin: 30px 0; padding: 20px; background: #f9f9f9; border-left: 4px solid #1a73e8; }
+        button { 
+            background: #1a73e8; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer;
+            margin: 10px 5px 10px 0;
+            font-size: 1em;
+        }
+        button:hover { background: #0d47a1; }
+    </style>
 </head>
 <body>
-<header>
-  <h1 style="color: #1a73e8; font-size: 2.5em;">🚀 HAVENIS AI</h1>
-  <div class="lang-toggle">
-    <button id="de-btn">DE</button>
-    <button id="en-btn">EN</button>
-  </div>
-</header>
+    <header>
+        <h1>🚀 HAVENIS AI</h1>
+        <p>Wi-Fi Sensing für intelligentes Vitalmonitoring</p>
+    </header>
 
-<main>
-  <!-- Slides -->
-  <section class="slide" data-slide="1" id="slide-1">
-    <h1 class="slide-title" data-de="HAVENIS AI – Mission" data-en="HAVENIS AI – Mission">HAVENIS AI – Mission</h1>
-    <p data-de="Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring, Datenschutz-first." 
-       data-en="We revolutionize Wi-Fi sensing for vital monitoring, privacy-first.">
-       Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring, Datenschutz-first.
-    </p>
-  </section>
+    <div class="content">
+        <div class="section">
+            <h2>🎯 Mission</h2>
+            <p>Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring mit Datenschutz an erster Stelle.</p>
+            <p>Kontaktlose Gesundheitsüberwachung ohne Kameras - nur mit Wi-Fi Signalen!</p>
+        </div>
 
-  <!-- Slide 2 – Problem -->
-  <section class="slide" data-slide="2" id="slide-2">
-    <h2 data-de="Problem" data-en="Problem">Problem</h2>
-    <p data-de="Herz- und Atemüberwachung ist aktuell invasiv und teuer." 
-       data-en="Heart and respiratory monitoring is currently invasive and expensive.">
-       Herz- und Atemüberwachung ist aktuell invasiv und teuer.
-    </p>
-  </section>
+        <div class="section">
+            <h2>💡 Was wir machen</h2>
+            <ul style="margin-left: 20px;">
+                <li>Innovative Wi-Fi Sensing Technologie</li>
+                <li>Datenschutz-fokussierte Lösungen</li>
+                <li>Intelligente Vitalmonitoring Systeme</li>
+                <li>Zuverlässige und sichere Technologie</li>
+            </ul>
+        </div>
 
-  <!-- Slide 3 – Lösung -->
-  <section class="slide" data-slide="3" id="slide-3">
-    <h2 data-de="Lösung" data-en="Solution">Lösung</h2>
-    <p data-de="HAVENIS AI nutzt Wi-Fi Sensing & Edge-KI für kontaktlose Vitalüberwachung." 
-       data-en="HAVENIS AI uses Wi-Fi sensing & Edge-AI for contactless vital monitoring.">
-       HAVENIS AI nutzt Wi-Fi Sensing & Edge-KI für kontaktlose Vitalüberwachung.
-    </p>
-  </section>
+        <div class="section">
+            <h2>🌟 Features</h2>
+            <p><strong>Kontaktlos:</strong> Keine Wearables oder Kameras erforderlich</p>
+            <p><strong>Datenschutz:</strong> Keine persönlichen Daten werden gesammelt</p>
+            <p><strong>Genau:</strong> Hochgenaue Vital-Messungen</p>
+            <p><strong>Überall:</strong> Funktioniert überall mit Wi-Fi</p>
+        </div>
 
-  <!-- Slide 4 – Tech-Architektur -->
-  <section class="slide" data-slide="4" id="slide-4">
-    <h2 data-de="Tech-Architektur" data-en="Tech Architecture">Tech-Architektur</h2>
-    <canvas id="tech-canvas" width="800" height="400"></canvas>
-  </section>
+        <div class="section">
+            <h2>📧 Kontakt</h2>
+            <p>Interessiert an HAVENIS AI?</p>
+            <button onclick="alert('Kontaktformular wird geladen...')">Nachricht senden</button>
+            <button onclick="alert('Website wird geladen...')">Mehr erfahren</button>
+        </div>
 
-  <!-- Slide 5 – Datenfluss / KI-Modelle -->
-  <section class="slide" data-slide="5" id="slide-5">
-    <h2 data-de="Datenfluss / KI-Modelle" data-en="Data Flow / AI Models">Datenfluss / KI-Modelle</h2>
-    <p data-de="Edge-KI verarbeitet Sensordaten lokal, Cloud für Analyse & Reporting." 
-       data-en="Edge-AI processes sensor data locally, Cloud for analytics & reporting.">
-       Edge-KI verarbeitet Sensordaten lokal, Cloud für Analyse & Reporting.
-    </p>
-    <canvas id="heatmap-canvas" width="800" height="400"></canvas>
-  </section>
-
-  <!-- Slide 6 – Use-Cases -->
-  <section class="slide" data-slide="6" id="slide-6">
-    <h2 data-de="Use-Cases" data-en="Use Cases">Use-Cases</h2>
-    <ul>
-      <li data-de="Pflegeheim Monitoring" data-en="Care Home Monitoring">Pflegeheim Monitoring</li>
-      <li data-de="Smart-Home Vital Tracking" data-en="Smart Home Vital Tracking">Smart-Home Vital Tracking</li>
-      <li data-de="Klinische Pilotprojekte" data-en="Clinical Pilot Projects">Klinische Pilotprojekte</li>
-    </ul>
-  </section>
-
-  <!-- Slide 7 – Markt & Trends -->
-  <section class="slide" data-slide="7" id="slide-7">
-    <h2 data-de="Markt & Trends" data-en="Market & Trends">Markt & Trends</h2>
-    <p data-de="Wachsender Markt für kontaktlose Vitalmessung, Privacy-first Lösungen im Fokus." 
-       data-en="Growing market for contactless vital monitoring, privacy-first solutions in focus.">
-       Wachsender Markt für kontaktlose Vitalmessung, Privacy-first Lösungen im Fokus.
-    </p>
-  </section>
-
-  <!-- Slide 8 – Businessmodell -->
-  <section class="slide" data-slide="8" id="slide-8">
-    <h2 data-de="Businessmodell" data-en="Business Model">Businessmodell</h2>
-    <p data-de="Hardware + SaaS-Lizenz für Pflegeeinrichtungen & Kliniken." 
-       data-en="Hardware + SaaS license for care facilities & clinics.">
-       Hardware + SaaS-Lizenz für Pflegeeinrichtungen & Kliniken.
-    </p>
-  </section>
-
-  <!-- Slide 9 – Proof-of-Concept -->
-  <section class="slide" data-slide="9" id="slide-9">
-    <h2 data-de="Proof-of-Concept" data-en="Proof-of-Concept">Proof-of-Concept</h2>
-    <p data-de="Erfolgreiche Pilotprojekte in 3 Pflegeheimen, präzise Messung von Herz- & Atemfrequenz." 
-       data-en="Successful pilots in 3 care homes, precise heart & respiratory measurement.">
-       Erfolgreiche Pilotprojekte in 3 Pflegeheimen, präzise Messung von Herz- & Atemfrequenz.
-    </p>
-  </section>
-
-  <!-- Slide 10 – KPIs -->
-  <section class="slide" data-slide="10" id="slide-10">
-    <h2 data-de="KPIs" data-en="KPIs">KPIs</h2>
-    <ul>
-      <li data-de="Pilotprojekte: 3" data-en="Pilot Projects: 3">Pilotprojekte: 3</li>
-      <li data-de="Messgenauigkeit Herz: ±2%" data-en="Heart Accuracy: ±2%">Messgenauigkeit Herz: ±2%</li>
-      <li data-de="Messgenauigkeit Atmung: ±3%" data-en="Respiration Accuracy: ±3%">Messgenauigkeit Atmung: ±3%</li>
-      <li data-de="Partner: Bosch, Charité, TU Berlin" data-en="Partners: Bosch, Charité, TU Berlin">Partner: Bosch, Charité, TU Berlin</li>
-      <li data-de="Funding: Pre-Seed 250k€, Seed Q1/2026" data-en="Funding: Pre-Seed €250k, Seed Q1/2026">Funding: Pre-Seed 250k€, Seed Q1/2026</li>
-    </ul>
-  </section>
-
-  <!-- Slide 11 – Roadmap -->
-  <section class="slide" data-slide="11" id="slide-11">
-    <h2 data-de="Roadmap" data-en="Roadmap">Roadmap</h2>
-    <ul>
-      <li data-de="2025: Produktfinalisierung & Pilotprojekte" data-en="2025: Product finalization & pilots">2025: Produktfinalisierung & Pilotprojekte</li>
-      <li data-de="2026: Skalierung & Partnerschaften" data-en="2026: Scaling & partnerships">2026: Skalierung & Partnerschaften</li>
-      <li data-de="2027+: Markteintritt international" data-en="2027+: International market entry">2027+: Markteintritt international</li>
-    </ul>
-  </section>
-
-  <!-- Slide 12 – Team & Partner -->
-  <section class="slide" id="features-detail">
-    <h2 data-de="Kernfunktionalitäten" data-en="Core Functionalities">Kernfunktionalitäten</h2>
-    <div class="features-detail">
-      <div class="feature-box">
-        <img src="images/feature_1.png" alt="Feature 1">
-        <h3 data-de="Edge AI Processing" data-en="Edge AI Processing">Edge AI Processing</h3>
-        <p data-de="Hochoptimierte KI-Modelle für die Verarbeitung direkt auf Edge-Geräten ohne Cloud-Abhängigkeit. Reduziert Latenz und verbessert Datenschutz." data-en="Highly optimized AI models for processing directly on edge devices without cloud dependency. Reduces latency and improves data privacy.">Hochoptimierte KI-Modelle für die Verarbeitung direkt auf Edge-Geräten ohne Cloud-Abhängigkeit. Reduziert Latenz und verbessert Datenschutz.</p>
-      </div>
-      <div class="feature-box">
-        <img src="images/feature_2.png" alt="Feature 2">
-        <h3 data-de="Signalverarbeitung & Sensorfusion" data-en="Signal Processing & Sensor Fusion">Signalverarbeitung & Sensorfusion</h3>
-        <p data-de="Fortgeschrittene Sensor-Fusionstechniken kombinieren Daten von mehreren Sensoren für präzise Umgebungserkennung und Wi-Fi Sensing." data-en="Advanced sensor fusion techniques combine data from multiple sensors for precise environmental recognition and Wi-Fi sensing.">Fortgeschrittene Sensor-Fusionstechniken kombinieren Daten von mehreren Sensoren für präzise Umgebungserkennung und Wi-Fi Sensing.</p>
-      </div>
-      <div class="feature-box">
-        <img src="images/feature_3.png" alt="Feature 3">
-        <h3 data-de="Embedded AI Systeme" data-en="Embedded AI Systems">Embedded AI Systeme</h3>
-        <p data-de="Robuste KI-Systeme für Embedded Devices und IoT-Anwendungen mit minimaler Ressourcennutzung und maximaler Effizienz." data-en="Robust AI systems for embedded devices and IoT applications with minimal resource consumption and maximum efficiency.">Robuste KI-Systeme für Embedded Devices und IoT-Anwendungen mit minimaler Ressourcennutzung und maximaler Effizienz.</p>
-      </div>
+        <div style="text-align: center; margin-top: 40px; color: #999; font-size: 0.9em;">
+            <p>© 2025 HAVENIS AI | Test Version</p>
+        </div>
     </div>
-</section>
 
-  <section class="slide" data-slide="12" id="slide-12">
-    <h2 data-de="Team & Partner" data-en="Team & Partners">Team & Partner</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="images/Danilo Kuss-CEO.jpg" alt="Danilo Kuss">
-        <h3 data-de="Danilo Kuss – CEO & Co-Founder" data-en="Danilo Kuss – CEO & Co-Founder">Danilo Kuss – CEO & Co-Founder</h3>
-        <p class="role" data-de="Geschäftsführung, Technische Leitung & Produktentwicklung" data-en="CEO, Technical Leadership & Product Development">Geschäftsführung, Technische Leitung & Produktentwicklung</p>
-        <p class="experience" data-de="Spezialist für Sensorfusion, Wi-Fi Sensing und AI-Edge-Computing mit über 12 Jahren Erfahrung in IoT-Architektur und Machine-Learning-Deployment. Leitete zuvor F&E-Projekte bei Bosch." data-en="Specialist in sensor fusion, Wi-Fi sensing, and AI-edge computing with 12+ years of experience in IoT architecture and machine learning deployment. Previously led R&D projects at Bosch.">Spezialist für Sensorfusion, Wi-Fi Sensing und AI-Edge-Computing mit über 12 Jahren Erfahrung in IoT-Architektur und Machine-Learning-Deployment. Leitete zuvor F&E-Projekte bei Bosch.</p>
-      </div>
-      <div class="team-member">
-        <img src="images/Dr. Elias Kern-CTO.jpeg" alt="Dr. Elias Kern">
-        <h3 data-de="Dr. Elias Kern – CTO & Co-Founder" data-en="Dr. Elias Kern – CTO & Co-Founder">Dr. Elias Kern – CTO & Co-Founder</h3>
-        <p class="role" data-de="Strategische Vision, Investor Relations" data-en="Strategic Vision & Investor Relations">Strategische Vision, Investor Relations</p>
-        <p class="experience" data-de="10+ Jahre im Bereich KI-Systemarchitektur, promovierter Neuroinformatiker (ETH Zürich), ehemals bei DeepMind Research tätig. Verantwortlich für die Unternehmensstrategie, wissenschaftliche Ausrichtung und Investor Relations." data-en="10+ years in AI system architecture, PhD in neuroinformatics (ETH Zurich), former researcher at DeepMind. Responsible for corporate strategy, scientific direction, and investor relations.">10+ Jahre im Bereich KI-Systemarchitektur, promovierter Neuroinformatiker (ETH Zürich), ehemals bei DeepMind Research tätig. Verantwortlich für die Unternehmensstrategie, wissenschaftliche Ausrichtung und Investor Relations.</p>
-      </div>
-      <div class="team-member">
-        <img src="images/Lara Nguyen-COO.jpg" alt="Lara Nguyen">
-        <h3 data-de="Lara Nguyen – COO" data-en="Lara Nguyen – COO">Lara Nguyen – COO</h3>
-        <p class="role" data-de="Operations, Partnernetzwerk und Skalierung" data-en="Operations, Partner Network & Scaling">Operations, Partnernetzwerk und Skalierung</p>
-        <p class="experience" data-de="Betriebswirtin mit Schwerpunkt Tech-Operations (TU München), Ex-Projektmanagerin bei Siemens Healthineers. Verantwortlich für Skalierungsprozesse, Budgetkontrolle und operative Exzellenz." data-en="Business administrator specializing in tech operations (TU Munich), former project manager at Siemens Healthineers. Responsible for scaling processes, budget control, and operational excellence.">Betriebswirtin mit Schwerpunkt Tech-Operations (TU München), Ex-Projektmanagerin bei Siemens Healthineers. Verantwortlich für Skalierungsprozesse, Budgetkontrolle und operative Exzellenz.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 13 – Investment -->
-  <section class="slide" data-slide="13" id="slide-13">
-    <h2 data-de="Investment" data-en="Investment">Investment</h2>
-    <p data-de="Wir suchen Seed-Investment, um 2026 die Skalierung zu starten." 
-       data-en="We are seeking seed investment to start scaling in 2026.">
-       Wir suchen Seed-Investment, um 2026 die Skalierung zu starten.
-    </p>
-  </section>
-
-  <!-- Slide 14 – Vision 2030 -->
-  <section class="slide" data-slide="14" id="slide-14">
-    <h2 data-de="Vision 2030" data-en="Vision 2030">Vision 2030</h2>
-    <p data-de="Weltweit kontaktlose Vitalüberwachung für Millionen Menschen – Privacy-first." 
-       data-en="Worldwide contactless vital monitoring for millions – privacy-first.">
-       Weltweit kontaktlose Vitalüberwachung für Millionen Menschen – Privacy-first.
-    </p>
-  </section>
-</main>
-
-<!-- Navigation -->
-<div class="nav-buttons">
-  <button id="prev-btn">←</button>
-  <button id="next-btn">→</button>
-  <button id="pdf-btn">PDF & Export</button>
-</div>
-
-<script src="/havenis-ai-website/script.js"></script>
+    <script>
+        console.log("HAVENIS AI Website geladen!");
+    </script>
 </body>
 </html>
