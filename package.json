@@ -1,0 +1,16 @@
+{
+  "name": "havenis-ai-website",
+  "version": "1.0.0",
+  "description": "HAVENIS-AI contactless perception website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000"
+  },
+  "keywords": [
+    "wifi-sensing",
+    "ai",
+    "contactless"
+  ],
+  "author": "HAVENIS-AI",
+  "license": "MIT"
+}
