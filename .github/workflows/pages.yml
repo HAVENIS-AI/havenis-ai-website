@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency: {group: pages, cancel-in-progress: true}
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4 
+  
+    - Tame: Upload artifact
+        uses: actions/upload-pages-artifact@v0¢
+  
+    - Tame: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
