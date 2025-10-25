@@ -1,68 +1,77 @@
-let currentSlide = 1;
-const slides = document.querySelectorAll('.slide');
+// Language Toggle
+let currentLang = 'de';
 
-function showSlide(n){
-  slides.forEach(s => s.classList.remove('active'));
-  slides[n-1].classList.add('active');
-}
+function setLang(lang) {
+    currentLang = lang;
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
 
-document.getElementById('next-btn').addEventListener('click', ()=>{
-  currentSlide = currentSlide<slides.length ? currentSlide+1 : slides.length;
-  showSlide(currentSlide);
-});
-
-document.getElementById('prev-btn').addEventListener('click', ()=>{
-  currentSlide = currentSlide>1 ? currentSlide-1 : 1;
-  showSlide(currentSlide);
-});
-
-showSlide(currentSlide);
-
-// DE/EN Toggle
-document.getElementById('de-btn').addEventListener('click', ()=> setLang('de'));
-document.getElementById('en-btn').addEventListener('click', ()=> setLang('en'));
-
-function setLang(lang){
-  document.querySelectorAll('[data-de]').forEach(el=>{
-    el.textContent = el.getAttribute(`data-${lang}`);
-  });
-}
-
-// PDF Export
-document.getElementById('pdf-btn').addEventListener('click', ()=> window.print());
-
-// Heatmap / Beamforming Canvas
-const heatmapCanvas = document.getElementById('heatmap-canvas');
-if(heatmapCanvas){
-  const ctx = heatmapCanvas.getContext('2d');
-  let t=0;
-  function drawHeatmap(){
-    ctx.clearRect(0,0,heatmapCanvas.width,heatmapCanvas.height);
-    for(let i=0;i<10;i++){
-      ctx.fillStyle = `rgba(0,255,255,${0.1+0.05*Math.sin(t+i)})`;
-      ctx.fillRect(50*i,50*i,80,80);
+    if (lang === 'de') {
+        document.getElementById('lang-de')?.classList.add('active');
+    } else {
+        document.getElementById('lang-en')?.classList.add('active');
     }
-    t+=0.1;
-    requestAnimationFrame(drawHeatmap);
-  }
-  drawHeatmap();
+
+    const elements = document.querySelectorAll('[data-de][data-en]');
+    elements.forEach(el => {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = el.getAttribute(`data-${lang}`) || '';
+        } else {
+            el.textContent = el.getAttribute(`data-${lang}`) || '';
+        }
+    });
+
+    localStorage.setItem('language', lang);
 }
 
-// Tech Architecture Canvas (optional animation)
-const techCanvas = document.getElementById('tech-canvas');
-if(techCanvas){
-  const ctx2 = techCanvas.getContext('2d');
-  function drawTech(){
-    ctx2.clearRect(0,0,techCanvas.width,techCanvas.height);
-    ctx2.fillStyle="#00ffff";
-    ctx2.fillRect(50,50,100,100);
-    ctx2.fillRect(300,50,100,100);
-    ctx2.fillRect(550,50,100,100);
-    ctx2.font="20px Inter";
-    ctx2.fillText("Edge",80,110);
-    ctx2.fillText("Cloud",330,110);
-    ctx2.fillText("UI",580,110);
-    requestAnimationFrame(drawTech);
-  }
-  drawTech();
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('language') || 'de';
+    setLang(savedLang);
+
+    // Setup language buttons
+    document.getElementById('lang-de')?.addEventListener('click', () => setLang('de'));
+    document.getElementById('lang-en')?.addEventListener('click', () => setLang('en'));
+});
+
+// Contact Form Handler
+function sendMessage() {
+    const name = document.getElementById('name')?.value?.trim() || '';
+    const email = document.getElementById('email')?.value?.trim() || '';
+    const message = document.getElementById('message')?.value?.trim() || '';
+
+    if (!name || !email || !message) {
+        alert(currentLang === 'de' ? 'Bitte füllen Sie alle Felder aus!' : 'Please fill all fields!');
+        return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert(currentLang === 'de' ? 'Bitte geben Sie eine gültige Email ein!' : 'Please enter a valid email!');
+        return false;
+    }
+
+    const subject = currentLang === 'de' ? 'HAVENIS Website Nachricht' : 'HAVENIS Website Message';
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoLink = `mailto:kontakt@havenis-ai.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    // Clear form
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+
+    return false;
 }
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+console.log('🚀 HAVENIS AI Website ready!');
