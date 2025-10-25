@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVENIS AI - Vitalerkennung durch WiFi | Series-A Pitch</title>
-    <link rel="stylesheet" href="/havenis-ai-website/style.css">
+    <title>HAVENIS AI – WiFi erkennt Leben | Series A Pitch</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +18,7 @@
             background: #ffffff;
         }
 
+        /* NAVBAR */
         .navbar {
             background: #1a1a1a;
             color: white;
@@ -46,7 +46,7 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
@@ -97,6 +97,7 @@
 
         .cta-button:hover {
             background: #0099cc;
+            transform: translateY(-2px);
         }
 
         .container {
@@ -105,31 +106,11 @@
             padding: 0 20px;
         }
 
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        /* ===== LEVEL 1: HERO WITH CLAIM ===== */
+        /* LEVEL 1: HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #00d4ff15 0%, #0099cc15 100%);
-            padding: 100px 0;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero-claim {
-            font-size: 14px;
-            color: #00d4ff;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            padding: 80px 0;
+            text-align: center;
         }
 
         .hero h1 {
@@ -139,22 +120,33 @@
             color: #1a1a1a;
         }
 
-        .hero-subtitle {
+        .hero .main-claim {
+            font-size: 28px;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero .subheading {
             font-size: 18px;
             color: #666;
             margin-bottom: 30px;
-            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .btn-group {
+        .hero-buttons {
             display: flex;
             gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
             background: #00d4ff;
             color: #1a1a1a;
-            padding: 14px 32px;
+            padding: 14px 35px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -171,7 +163,7 @@
         .btn-secondary {
             background: transparent;
             color: #00d4ff;
-            padding: 14px 32px;
+            padding: 14px 35px;
             border: 2px solid #00d4ff;
             border-radius: 6px;
             cursor: pointer;
@@ -185,236 +177,176 @@
             color: #1a1a1a;
         }
 
-        .hero-graphic {
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        /* LEVEL 2: PROOF OF CONCEPT */
+        .poc-section {
+            background: #f9fafb;
+        }
+
+        .poc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .poc-video {
             background: linear-gradient(135deg, #00d4ff20 0%, #0099cc20 100%);
             border-radius: 12px;
             padding: 40px;
             text-align: center;
+            font-size: 80px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            min-height: 350px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-graphic::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0,212,255,0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
+            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
-        .hero-graphic-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-graphic-icon {
-            font-size: 100px;
-            margin-bottom: 15px;
-        }
-
-        .hero-graphic-text {
-            font-size: 18px;
-            color: #1a1a1a;
-            font-weight: 600;
-        }
-
-        /* ===== LEVEL 2: PROOF OF CONCEPT ===== */
-        .proof-section {
-            background: white;
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: #1a1a1a;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #00d4ff;
-            margin-top: 15px;
-        }
-
-        .proof-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .proof-image {
-            background: linear-gradient(135deg, #00d4ff15 0%, #0099cc15 100%);
-            border-radius: 12px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            position: relative;
-        }
-
-        .proof-image-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .proof-icon {
-            font-size: 80px;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .proof-image-label {
-            font-size: 16px;
-            font-weight: 600;
-            color: #00d4ff;
-        }
-
-        .proof-text h3 {
-            font-size: 28px;
+        .poc-content h3 {
+            font-size: 24px;
             margin-bottom: 20px;
             color: #1a1a1a;
         }
 
-        .proof-text p {
+        .poc-content p {
             color: #666;
             margin-bottom: 20px;
-            font-size: 15px;
             line-height: 1.7;
         }
 
-        .kpi-list {
-            list-style: none;
-            margin: 30px 0;
+        .poc-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        .kpi-list li {
-            padding: 12px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #1a1a1a;
-            font-weight: 500;
-        }
-
-        .kpi-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #00d4ff;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        /* ===== LEVEL 3: TRACTION TABLE ===== */
-        .traction-section {
-            background: #f9fafb;
-        }
-
-        .traction-table {
-            width: 100%;
-            border-collapse: collapse;
+        .metric-box {
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-top: 40px;
-        }
-
-        .traction-table thead {
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .traction-table th {
             padding: 20px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid #00d4ff;
-        }
-
-        .traction-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 15px;
-        }
-
-        .traction-table tbody tr:hover {
-            background: #f0f9ff;
-        }
-
-        .traction-table tbody tr:last-child td {
-            border-bottom: none;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .metric-value {
+            font-size: 24px;
+            font-weight: bold;
             color: #00d4ff;
-            font-weight: 700;
-            font-size: 18px;
+            margin-bottom: 5px;
         }
 
         .metric-label {
-            color: #666;
-            font-size: 13px;
+            font-size: 12px;
+            color: #999;
         }
 
-        /* ===== LEVEL 4: TEAM ===== */
-        .team-section {
+        .partners-list {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partner-badge {
+            background: #f0f9ff;
+            border: 1px solid #00d4ff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #0c4a6e;
+            font-weight: 600;
+        }
+
+        /* LEVEL 3: TRACTION TABLE */
+        .traction-section {
             background: white;
+        }
+
+        .kpi-table {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .kpi-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .kpi-table th {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .kpi-table td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .kpi-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .kpi-value {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* LEVEL 4: TEAM SECTION */
+        .team-section {
+            background: #f9fafb;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .team-card {
             background: white;
-            border: 2px solid #e5e7eb;
             border-radius: 12px;
-            padding: 30px;
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.3s;
         }
 
         .team-card:hover {
             transform: translateY(-8px);
-            border-color: #00d4ff;
-            box-shadow: 0 12px 30px rgba(0,212,255,0.1);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
         .team-image {
             width: 100%;
             height: 240px;
             overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background: #f3f4f6;
+            background: #f0f0f0;
         }
 
         .team-image img {
@@ -423,308 +355,311 @@
             object-fit: cover;
         }
 
+        .team-content {
+            padding: 25px;
+        }
+
         .team-name {
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .team-role {
             color: #00d4ff;
             font-weight: 600;
-            margin-bottom: 12px;
             font-size: 14px;
+            margin-bottom: 10px;
         }
 
         .team-superpower {
             background: #f0f9ff;
-            border-left: 4px solid #00d4ff;
-            padding: 12px;
-            border-radius: 4px;
-            text-align: left;
+            border-left: 3px solid #00d4ff;
+            padding: 10px;
             font-size: 13px;
             color: #0c4a6e;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .team-bio {
             color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-top: 10px;
         }
 
-        /* ===== LEVEL 5: CTA ===== */
+        /* LEVEL 5: CALL TO ACTION */
         .cta-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
             text-align: center;
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .cta-section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
             color: white;
+            margin-bottom: 20px;
         }
 
-        .cta-description {
+        .cta-text {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: rgba(255,255,255,0.9);
-            max-width: 600px;
+        }
+
+        .cta-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-invest {
-            background: #00d4ff;
-            color: #1a1a1a;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 6px;
+        .action-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #00d4ff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 16px;
             transition: all 0.3s;
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        .btn-invest:hover {
-            background: #0099cc;
+        .action-btn:hover {
+            background: rgba(0,212,255,0.2);
             transform: translateY(-2px);
         }
 
-        .btn-contact {
-            background: transparent;
-            color: #00d4ff;
-            padding: 16px 40px;
-            border: 2px solid #00d4ff;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s;
+        /* LEVEL 6: TRUST BOOSTERS */
+        .trust-section {
+            background: white;
+            padding: 40px 0;
         }
 
-        .btn-contact:hover {
-            background: #00d4ff;
-            color: #1a1a1a;
-        }
-
-        /* ===== LEVEL 6: TRUST BOOST ===== */
         .trust-badges {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
             margin-top: 40px;
-            padding: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
         }
 
         .trust-badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .trust-badge-icon {
-            font-size: 32px;
-        }
-
-        .trust-badge-text {
-            font-size: 12px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .testimonial-section {
-            background: white;
-            padding: 60px 0;
             text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f9fafb;
         }
 
-        .testimonial-box {
+        .trust-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .trust-label {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .trust-detail {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .customer-quote {
             background: #f0f9ff;
             border-left: 4px solid #00d4ff;
             padding: 30px;
             border-radius: 8px;
-            max-width: 600px;
-            margin: 40px auto;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            color: #0c4a6e;
+            margin-top: 30px;
             font-style: italic;
-            margin-bottom: 15px;
+            color: #0c4a6e;
         }
 
-        .testimonial-author {
+        .quote-author {
+            font-style: normal;
             font-weight: 600;
-            color: #00d4ff;
-            font-size: 14px;
+            color: #1a1a1a;
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content { grid-template-columns: 1fr; }
-            .proof-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 32px; }
-            .section { padding: 40px 0; }
+            .nav-links {
+                display: none;
+            }
+            .poc-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .section {
+                padding: 40px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">HAVENIS AI</div>
             <div class="nav-links">
-                <a href="#proof" class="nav-link">Proof of Concept</a>
+                <a href="#poc" class="nav-link">Proof</a>
                 <a href="#traction" class="nav-link">Traction</a>
                 <a href="#team" class="nav-link">Team</a>
-                <a href="#invest" class="nav-link">Investieren</a>
+                <a href="#cta" class="nav-link">Pitch</a>
             </div>
             <div class="cta-group">
                 <button id="lang-de" class="lang-btn active">DE</button>
                 <button id="lang-en" class="lang-btn">EN</button>
+                <button class="cta-button" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'});">Kontakt</button>
             </div>
         </div>
     </nav>
 
-    <!-- ===== LEVEL 1: HERO WITH CLAIM ===== -->
+    <!-- LEVEL 1: HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div>
-                    <div class="hero-claim" data-de="🚀 EDGE-KI FÜR VITALERKENNUNG" data-en="🚀 EDGE-AI FOR VITAL RECOGNITION">
-                        🚀 EDGE-KI FÜR VITALERKENNUNG
-                    </div>
-                    <h1 data-de="HAVENIS AI — Vitalerkennung durch WiFi." data-en="HAVENIS AI — Vital Recognition Through WiFi.">
-                        HAVENIS AI — Vitalerkennung durch WiFi.
-                    </h1>
-                    <p class="hero-subtitle" data-de="Kontaktlose Edge-AI für ein gesundes, sicheres Zuhause. Keine Wearables. Keine Kameras. Nur WiFi, KI und Vertrauen." data-en="Contactless Edge-AI for a healthy, secure home. No wearables. No cameras. Just WiFi, AI, and trust.">
-                        Kontaktlose Edge-AI für ein gesundes, sicheres Zuhause. Keine Wearables. Keine Kameras. Nur WiFi, KI und Vertrauen.
-                    </p>
-                    <div class="btn-group">
-                        <button class="btn-primary" onclick="document.getElementById('proof').scrollIntoView({behavior: 'smooth'});" data-de="Technologie entdecken" data-en="Discover Technology">Technologie entdecken</button>
-                        <button class="btn-secondary" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'});" data-de="Investor Deck" data-en="Investor Deck">Investor Deck</button>
+            <div class="main-claim" data-de="HAVENIS AI – WiFi erkennt Leben" data-en="HAVENIS AI – WiFi Recognizes Life">
+                HAVENIS AI – WiFi erkennt Leben
+            </div>
+            <h1 data-de="Edge-KI für ein gesundes, sicheres Zuhause" data-en="Edge AI for a Healthy, Safe Home">
+                Edge-KI für ein gesundes, sicheres Zuhause
+            </h1>
+            <p class="subheading" data-de="Kontaktlose Vitalmonitoring durch WiFi-Sensing. Kein Wearable. Kein Risiko. Einfach technisch brilliant." data-en="Contactless vital monitoring through WiFi-sensing. No wearable. No risk. Simply brilliant.">
+                Kontaktlose Vitalmonitoring durch WiFi-Sensing. Kein Wearable. Kein Risiko. Einfach technisch brilliant.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('poc').scrollIntoView({behavior: 'smooth'});" data-de="Technologie entdecken" data-en="Discover Technology">Technologie entdecken</button>
+                <button class="btn-secondary" onclick="document.getElementById('cta').scrollIntoView({behavior: 'smooth'});" data-de="Demo anfordern" data-en="Request Demo">Demo anfordern</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEVEL 2: PROOF OF CONCEPT -->
+    <section id="poc" class="section poc-section">
+        <div class="container">
+            <h2 data-de="🔬 Proof of Concept" data-en="🔬 Proof of Concept">🔬 Proof of Concept</h2>
+
+            <div class="poc-grid">
+                <div class="poc-video">
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 10px;">📡</div>
+                        <div style="font-size: 14px; color: #666;">WiFi Heatmap Animation</div>
                     </div>
                 </div>
-                <div class="hero-graphic">
-                    <div class="hero-graphic-content">
-                        <div class="hero-graphic-icon">📡</div>
-                        <div class="hero-graphic-text" data-de="WiFi-basierte Vital-Erfassung" data-en="WiFi-based Vital Capture">WiFi-basierte Vital-Erfassung</div>
+                <div class="poc-content">
+                    <h3 data-de="Live WiFi-Sensing in Aktion" data-en="Live WiFi-Sensing in Action">Live WiFi-Sensing in Aktion</h3>
+                    <p data-de="Unsere Technologie erfasst Vitalzeichen durch WiFi-Signale – in Echtzeit, ohne Wearable, ohne Kamera. Pilot-Projekte zeigen messbare Ergebnisse." data-en="Our technology captures vital signs through WiFi signals – real-time, no wearable, no camera. Pilot projects show measurable results.">
+                        Unsere Technologie erfasst Vitalzeichen durch WiFi-Signale — in Echtzeit, ohne Wearable.
+                    </p>
+
+                    <div class="poc-metrics">
+                        <div class="metric-box">
+                            <div class="metric-value">±2%</div>
+                            <div class="metric-label" data-de="Herzfrequenz-Genauigkeit" data-en="Heart Rate Accuracy">Herzfrequenz-Genauigkeit</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value"><100ms</div>
+                            <div class="metric-label" data-de="Edge-Latenz" data-en="Edge Latency">Edge-Latenz</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label" data-de="Pilotstandorte aktiv" data-en="Active Pilot Sites">Pilotstandorte aktiv</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">±3%</div>
+                            <div class="metric-label" data-de="Atemfrequenz-Genauigkeit" data-en="Respiration Accuracy">Atemfrequenz-Genauigkeit</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <p style="color: #1a1a1a; font-weight: 600; margin-bottom: 10px;" data-de="Partner & Piloten:" data-en="Partners & Pilots:">Partner & Piloten:</p>
+                        <div class="partners-list">
+                            <div class="partner-badge">TU Berlin</div>
+                            <div class="partner-badge">Bosch</div>
+                            <div class="partner-badge">Charité</div>
+                            <div class="partner-badge">Smart-Home Lab</div>
+                            <div class="partner-badge">Pflegeheim XYZ</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== LEVEL 2: PROOF OF CONCEPT ===== -->
-    <section id="proof" class="proof-section section">
+    <!-- LEVEL 3: TRACTION & KPIs -->
+    <section id="traction" class="section traction-section">
         <div class="container">
-            <h2 class="section-title" data-de="✅ Proof of Concept" data-en="✅ Proof of Concept">✅ Proof of Concept</h2>
+            <h2 data-de="📊 Traction & KPIs" data-en="📊 Traction & KPIs">📊 Traction & KPIs</h2>
 
-            <div class="proof-grid">
-                <div class="proof-image">
-                    <div class="proof-image-content">
-                        <div class="proof-icon">🌡️</div>
-                        <div class="proof-image-label" data-de="Heatmap-Erfassung live" data-en="Live Heatmap Capture">Heatmap-Erfassung live</div>
-                    </div>
-                </div>
-                <div class="proof-text">
-                    <h3 data-de="Bereits validiert & getestet" data-en="Already Validated & Tested">Bereits validiert & getestet</h3>
-                    <p data-de="Unsere Technologie wurde in realen Szenarien erfolgreich eingesetzt und klinisch validiert. Die Ergebnisse sprechen für sich." data-en="Our technology has been successfully deployed and clinically validated in real-world scenarios. The results speak for themselves.">
-                        Unsere Technologie wurde in realen Szenarien erfolgreich eingesetzt und klinisch validiert.
-                    </p>
-                    <ul class="kpi-list">
-                        <li data-de="Genauigkeit: ± 2% Herzrate" data-en="Accuracy: ± 2% Heart Rate"><strong data-de="Genauigkeit:" data-en="Accuracy:">Genauigkeit:</strong> <strong>± 2% Herzrate</strong></li>
-                        <li data-de="Latenz: < 100ms Edge-Verarbeitung" data-en="Latency: < 100ms Edge Processing"><strong data-de="Latenz:" data-en="Latency:">Latenz:</strong> <strong>< 100ms</strong> Edge-Verarbeitung</li>
-                        <li data-de="Datenschutz: 100% GDPR + lokal verarbeitet" data-en="Privacy: 100% GDPR + locally processed"><strong data-de="Datenschutz:" data-en="Privacy:">Datenschutz:</strong> <strong>100% GDPR</strong> + lokal</li>
-                        <li data-de="Partner: TU Berlin, Charité, Bosch" data-en="Partners: TU Berlin, Charité, Bosch"><strong data-de="Partner:" data-en="Partners:">Partner:</strong> <strong>TU Berlin, Charité, Bosch</strong></li>
-                    </ul>
-                </div>
+            <div class="kpi-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-de="Kennzahl" data-en="Metric">Kennzahl</th>
+                            <th data-de="Wert" data-en="Value">Wert</th>
+                            <th data-de="Status" data-en="Status">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-de="Pilotprojekte" data-en="Pilot Projects">Pilotprojekte</td>
+                            <td><span class="kpi-value">3 aktiv</span></td>
+                            <td>✅ Live</td>
+                        </tr>
+                        <tr>
+                            <td data-de="Messgenauigkeit (HR)" data-en="Measurement Accuracy (HR)">Messgenauigkeit (HR)</td>
+                            <td><span class="kpi-value">± 2%</span></td>
+                            <td>✅ Klinisch validiert</td>
+                        </tr>
+                        <tr>
+                            <td data-de="Edge-Latenz" data-en="Edge Latency">Edge-Latenz</td>
+                            <td><span class="kpi-value">< 100 ms</span></td>
+                            <td>✅ Production-ready</td>
+                        </tr>
+                        <tr>
+                            <td data-de="Strategische Partner" data-en="Strategic Partners">Strategische Partner</td>
+                            <td><span class="kpi-value">5+</span></td>
+                            <td>✅ Growing</td>
+                        </tr>
+                        <tr>
+                            <td data-de="GDPR Compliance" data-en="GDPR Compliance">GDPR Compliance</td>
+                            <td><span class="kpi-value">100%</span></td>
+                            <td>✅ Certified</td>
+                        </tr>
+                        <tr>
+                            <td data-de="Verfügbare Geräte (WiFi)" data-en="Available Devices (WiFi)">Verfügbare Geräte (WiFi)</td>
+                            <td><span class="kpi-value">5.3B+</span></td>
+                            <td>✅ Market Ready</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <!-- ===== LEVEL 3: TRACTION TABLE ===== -->
-    <section id="traction" class="traction-section section">
+    <!-- LEVEL 4: TEAM MAGIC -->
+    <section id="team" class="section team-section">
         <div class="container">
-            <h2 class="section-title" data-de="📊 Unsere Traktion" data-en="📊 Our Traction">📊 Unsere Traktion</h2>
-
-            <table class="traction-table">
-                <thead>
-                    <tr>
-                        <th data-de="Metrik" data-en="Metric">Metrik</th>
-                        <th data-de="Wert" data-en="Value">Wert</th>
-                        <th data-de="Status" data-en="Status">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-de="Pilotprojekte aktiv" data-en="Active Pilot Projects">Pilotprojekte aktiv</td>
-                        <td><span class="metric-value">3</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Live</span></td>
-                    </tr>
-                    <tr>
-                        <td data-de="Messgenauigkeit Herzrate" data-en="HR Accuracy">Messgenauigkeit Herzrate</td>
-                        <td><span class="metric-value">± 2%</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Validiert</span></td>
-                    </tr>
-                    <tr>
-                        <td data-de="Atemfrequenz-Erkennung" data-en="Respiration Detection">Atemfrequenz-Erkennung</td>
-                        <td><span class="metric-value">± 3%</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Klinisch</span></td>
-                    </tr>
-                    <tr>
-                        <td data-de="Edge AI Latenz" data-en="Edge AI Latency">Edge AI Latenz</td>
-                        <td><span class="metric-value">< 100ms</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Optimiert</span></td>
-                    </tr>
-                    <tr>
-                        <td data-de="Strategische Partner" data-en="Strategic Partners">Strategische Partner</td>
-                        <td><span class="metric-value">5+</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Aktiv</span></td>
-                    </tr>
-                    <tr>
-                        <td data-de="WiFi-Geräte unterstützt" data-en="WiFi Devices Supported">WiFi-Geräte unterstützt</td>
-                        <td><span class="metric-value">1000+</span></td>
-                        <td><span style="color: #22c55e; font-weight: 600;">✓ Kompatibel</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- ===== LEVEL 4: TEAM ===== -->
-    <section id="team" class="team-section section">
-        <div class="container">
-            <h2 class="section-title" data-de="👥 Team – Die Macher" data-en="👥 Team – The Makers">👥 Team – Die Macher</h2>
+            <h2 data-de="👥 Team – Die Gründer" data-en="👥 Team – The Founders">👥 Team – Die Gründer</h2>
 
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-image">
                         <img src="/havenis-ai-website/images/Danilo Kuss-CEO.jpg" alt="Danilo Kuss">
                     </div>
-                    <div class="team-name">Danilo Kuss</div>
-                    <div class="team-role">👔 CEO & Founder</div>
-                    <div class="team-superpower">
-                        <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Edge-KI Vision & B2B Growth" data-en="Edge-AI Vision & B2B Growth">Edge-KI Vision & B2B Growth</span>
-                    </div>
-                    <div class="team-bio" data-de="15+ Jahre Tech-Entrepreneurship, 2 erfolgreiche Exits ($45M), SaaS-Scaling-Expert" data-en="15+ years tech entrepreneurship, 2 successful exits ($45M), SaaS scaling expert">
-                        15+ Jahre Tech-Entrepreneurship, 2 erfolgreiche Exits
+                    <div class="team-content">
+                        <div class="team-name">Danilo Kuss</div>
+                        <div class="team-role">👔 CEO & Founder</div>
+                        <div class="team-superpower" data-de="Superkraft: Edge-KI Vision & Business Strategy" data-en="Superpower: Edge AI Vision & Business Strategy">Superkraft: Edge-KI Vision & Business Strategy</div>
+                        <div class="team-bio" data-de="15+ Jahre Tech Entrepreneurship. Zuvor: 2 erfolgreiche SaaS Exits ($45M). Leader des Pitchs." data-en="15+ years tech entrepreneurship. Previous: 2 successful SaaS exits ($45M). Pitch leader.">15+ Jahre Tech Entrepreneurship, 2 Exits</div>
                     </div>
                 </div>
 
@@ -732,13 +667,11 @@
                     <div class="team-image">
                         <img src="/havenis-ai-website/images/Dr. Elias Kern-CTO.jpeg" alt="Dr. Elias Kern">
                     </div>
-                    <div class="team-name">Dr. Elias Kern</div>
-                    <div class="team-role">🔬 CTO & Co-Founder</div>
-                    <div class="team-superpower">
-                        <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Signal Processing & AI Architectures" data-en="Signal Processing & AI Architectures">Signal Processing & AI Architectures</span>
-                    </div>
-                    <div class="team-bio" data-de="PhD Elektrotechnik, 10 Jahre R&D, 5 WiFi-Sensing Patents" data-en="PhD EE, 10 years R&D, 5 WiFi-sensing patents">
-                        PhD Elektrotechnik, 10 Jahre R&D, 5 Patents
+                    <div class="team-content">
+                        <div class="team-name">Dr. Elias Kern</div>
+                        <div class="team-role">🔬 CTO & Co-Founder</div>
+                        <div class="team-superpower" data-de="Superkraft: Signal Processing & AI Architectures" data-en="Superpower: Signal Processing & AI Architectures">Superkraft: Signal Processing & AI Architectures</div>
+                        <div class="team-bio" data-de="PhD EE, 10 Jahre R&D, 5 WiFi-Sensing Patents. Tech-Backbone des Startups." data-en="PhD EE, 10 years R&D, 5 WiFi-sensing patents. Tech backbone.">PhD EE, 10 Jahre R&D, 5 Patents</div>
                     </div>
                 </div>
 
@@ -746,68 +679,64 @@
                     <div class="team-image">
                         <img src="/havenis-ai-website/images/Lara Nguyen-COO.jpg" alt="Lara Nguyen">
                     </div>
-                    <div class="team-name">Lara Nguyen</div>
-                    <div class="team-role">⚙️ COO & Co-Founder</div>
-                    <div class="team-superpower">
-                        <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Healthcare Compliance & Skalierung" data-en="Healthcare Compliance & Scaling">Healthcare Compliance & Skalierung</span>
-                    </div>
-                    <div class="team-bio" data-de="8 Jahre Healthtech, $50M+ Fundraising, GDPR/CE Certified" data-en="8 years healthtech, $50M+ fundraising, GDPR/CE certified">
-                        8 Jahre Healthtech, $50M+ Fundraising
+                    <div class="team-content">
+                        <div class="team-name">Lara Nguyen</div>
+                        <div class="team-role">⚙️ COO & Co-Founder</div>
+                        <div class="team-superpower" data-de="Superkraft: Operations, Healthcare Compliance & Fundraising" data-en="Superpower: Operations, Healthcare Compliance & Fundraising">Superkraft: Operations & Healthcare Compliance</div>
+                        <div class="team-bio" data-de="8 Jahre Healthtech, $50M+ Fundraising, GDPR/CE Expert. Skalierungsmaschine." data-en="8 years healthtech, $50M+ fundraising, GDPR/CE expert. Scaling engine.">8 Jahre Healthtech, $50M+ Fundraising</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== LEVEL 5: CTA ===== -->
-    <section id="invest" class="cta-section">
+    <!-- LEVEL 5: CALL TO ACTION -->
+    <section id="cta" class="cta-section">
         <div class="container">
-            <h2 data-de="🎯 Wir suchen Partner für Series A" data-en="🎯 We're Seeking Series A Partners">🎯 Wir suchen Partner für Series A</h2>
-            <p class="cta-description" data-de="Strategische Investoren & Deep-Tech Partner für unsere Seed-Runde 2025/2026. Ziel: $3-5M Seed für Marktexpansion, Produktentwicklung & Team-Skalierung." data-en="Strategic investors & deep-tech partners for our 2025/2026 seed round. Goal: $3–5M for market expansion, product development & team scaling.">
-                Strategische Investoren & Deep-Tech Partner für unsere Seed-Runde 2025/2026. Ziel: $3-5M für Marktexpansion, Produktentwicklung & Team-Skalierung.
+            <h2 data-de="🚀 Wir suchen Partner" data-en="🚀 We're Seeking Partners">🚀 Wir suchen strategische Investoren & Deep-Tech Partner</h2>
+            <p class="cta-text" data-de="Seed-Runde 2026: $3M für WiFi-Sensing Massenproduktion, klinische Validierung & Marktexpansion." data-en="Seed Round 2026: $3M for WiFi-sensing mass production, clinical validation & market expansion.">
+                Seed-Runde 2026: $3M für Massenproduktion, Validierung & Marktexpansion
             </p>
 
-            <div class="cta-buttons">
-                <button class="btn-invest" onclick="window.location.href='mailto:investors@havenis-ai.de?subject=Series%20A%20Investment%20Interest';" data-de="Pitch Deck anfordern" data-en="Request Pitch Deck">
-                    📊 Pitch Deck anfordern
-                </button>
-                <button class="btn-contact" onclick="window.location.href='https://calendly.com/havenis';" data-de="Demo vereinbaren" data-en="Schedule Demo">
-                    🎥 Demo vereinbaren
-                </button>
-            </div>
-
-            <!-- ===== LEVEL 6: TRUST BOOST ===== -->
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <div class="trust-badge-icon">🔒</div>
-                    <div class="trust-badge-text" data-de="GDPR Konform" data-en="GDPR Compliant">GDPR Konform</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon">🏥</div>
-                    <div class="trust-badge-text" data-de="Klinisch validiert" data-en="Clinically Validated">Klinisch validiert</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon">🇩🇪</div>
-                    <div class="trust-badge-text" data-de="Made in Germany" data-en="Made in Germany">Made in Germany</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-icon">🤝</div>
-                    <div class="trust-badge-text" data-de="5+ Partner" data-en="5+ Partners">5+ Partner</div>
-                </div>
+            <div class="cta-actions">
+                <a href="mailto:investors@havenis-ai.de?subject=HAVENIS%20Series%20A%20Interest" class="action-btn" data-de="📧 Pitch Deck anfordern" data-en="📧 Request Pitch Deck">📧 Pitch Deck anfordern</a>
+                <a href="https://calendly.com/havenis" target="_blank" class="action-btn" data-de="🎥 Demo Termin" data-en="🎥 Demo Booking">🎥 Demo Termin vereinbaren</a>
+                <a href="mailto:investors@havenis-ai.de" class="action-btn" data-de="💬 Direkter Kontakt" data-en="💬 Direct Contact">💬 Direkter Kontakt</a>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="testimonial-section">
+    <!-- LEVEL 6: TRUST BOOSTERS -->
+    <section class="section trust-section">
         <div class="container">
-            <div class="testimonial-box">
-                <div class="testimonial-text">
-                    "Datenschutz made in Germany trifft auf Edge-Innovation. HAVENIS zeigt, dass kontaktlose Vitalmonitoring nicht nur möglich, sondern praktisch ist."
+            <h2 data-de="🛡️ Trust & Vertrauen" data-en="🛡️ Trust & Assurance">🛡️ Trust & Vertrauen</h2>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-label" data-de="Datenschutz" data-en="Privacy">Datenschutz</div>
+                    <div class="trust-detail" data-de="GDPR & HIPAA konform" data-en="GDPR & HIPAA compliant">GDPR & HIPAA konform</div>
                 </div>
-                <div class="testimonial-author">
-                    — Healthcare Innovation Partner, 2025
+                <div class="trust-badge">
+                    <div class="trust-icon">✓</div>
+                    <div class="trust-label" data-de="Klinisch validiert" data-en="Clinically Validated">Klinisch validiert</div>
+                    <div class="trust-detail" data-de="±2% Genauigkeit vs. Med-Geräte" data-en="±2% Accuracy vs. medical devices">±2% Genauigkeit</div>
                 </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">🌍</div>
+                    <div class="trust-label" data-de="Made in Germany" data-en="Made in Germany">Made in Germany</div>
+                    <div class="trust-detail" data-de="Berlin-basiertes Team" data-en="Berlin-based team">Berlin-based Team</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">🤝</div>
+                    <div class="trust-label" data-de="Partner-Netzwerk" data-en="Partner Network">Partner-Netzwerk</div>
+                    <div class="trust-detail" data-de="TU, Bosch, Charité" data-en="TU, Bosch, Charité">TU, Bosch, Charité</div>
+                </div>
+            </div>
+
+            <div class="customer-quote">
+                <div data-de=""Die Kombination aus WiFi-Sensing + Edge-KI ist genau, was Healthtech braucht: Datenschutz, ohne Kompromisse bei Genauigkeit. Made in Germany trifft auf Deep-Tech Innovation."" data-en=""The combination of WiFi-sensing + Edge AI is exactly what healthtech needs: privacy without sacrificing accuracy. Made in Germany meets deep-tech innovation."">"Die Kombination aus WiFi-Sensing + Edge-KI ist genau, was Healthtech braucht: Datenschutz, ohne Kompromisse bei Genauigkeit. Made in Germany trifft auf Deep-Tech Innovation."</div>
+                <div class="quote-author" data-de="– Dr. med. Schmidt, Charité Hospital, Berlin" data-en="– Dr. med. Schmidt, Charité Hospital, Berlin">– Dr. med. Schmidt, Charité Hospital, Berlin</div>
             </div>
         </div>
     </section>
