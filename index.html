@@ -1,898 +1,279 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVENIS AI – Vitalerkennung durch WiFi | Series A</title>
-    <link rel="stylesheet" href="/havenis-ai-website/style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAVENIS-AI – Kontaktlose KI‑Wahrnehmung</title>
+<meta name="description" content="Wi‑Fi‑Sensing‑KI erkennt Präsenz, Bewegung & Vitalmuster – kamera‑frei, DSGVO‑konform.">
+<link rel="canonical" href="https://www.havenis-ai.vercel.app/">
+<meta name="theme-color" content="#071026">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="HAVENIS-AI – Kontaktlose KI‑Wahrnehmung">
+<meta property="og:description" content="Präsenz-, Bewegungs- und Vitalmuster kontaktlos über Wi‑Fi – kamera‑frei, DSGVO‑konform.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.havenis-ai.vercel.app/">
+<meta property="og:image" content="https://www.havenis-ai.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.havenis-ai.vercel.app/#organization","name":"HAVENIS-AI UG (i.Gr.)","url":"https://www.havenis-ai.vercel.app","logo":"https://www.havenis-ai.vercel.app/favicon.svg","address":{"@type":"PostalAddress","streetAddress":"Damaschkeweg 1","postalCode":"15517","addressLocality":"Fürstenwalde","addressCountry":"DE"},"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"HAVENIS-AI@web.de","telephone":"+49-3361-747868"},{"@type":"ContactPoint","contactType":"customer support","telephone":"+49-15510-926776"}],"founder":{"@type":"Person","name":"Danilo Kuss"},"employee":[{"@type":"Person","name":"Danilo Kuss","jobTitle":"CEO"},{"@type":"Person","name":"Sarah Müller","jobTitle":"COO"},{"@type":"Person","name":"Thomas Wagner","jobTitle":"CTO"},{"@type":"Person","name":"Julia Schmidt","jobTitle":"CFO"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"AI-based environmental perception","name":"Wi-Fi Sensing","description":"Contactless detection of presence, respiration, and movement patterns using existing Wi-Fi signals for applications in health care, smart living, and security. The service is privacy-by-design, operating without cameras or microphones.","provider":{"@type":"Organization","@id":"https://www.havenis-ai.vercel.app/#organization"},"areaServed":{"@type":"Country","name":"DE"}}</script>
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-        }
-
-        /* NAVIGATION */
-        .navbar {
-            background: #1a1a1a;
-            color: white;
-            padding: 1.2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 14px;
-        }
-
-        .nav-link:hover {
-            color: #00d4ff;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .lang-btn {
-            background: none;
-            border: 1px solid #00d4ff;
-            color: white;
-            padding: 6px 12px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-            font-size: 12px;
-        }
-
-        .lang-btn.active {
-            background: #00d4ff;
-            color: #1a1a1a;
-        }
-
-        .cta-button {
-            background: #00d4ff;
-            color: #1a1a1a;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #0099cc;
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        h1, h2, h3 {
-            color: #1a1a1a;
-        }
-
-        h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 36px;
-            line-height: 1.3;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        /* LEVEL 1: HERO CLAIM */
-        .hero {
-            background: linear-gradient(135deg, #00d4ff15 0%, #0099cc15 100%);
-            padding: 80px 0;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-headline {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.1;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-        }
-
-        .hero-claim {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .hero-subtext {
-            font-size: 16px;
-            color: #999;
-            margin-bottom: 35px;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #00d4ff;
-            color: #1a1a1a;
-        }
-
-        .btn-primary:hover {
-            background: #0099cc;
-            transform: translateY(-3px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #00d4ff;
-            border: 2px solid #00d4ff;
-        }
-
-        .btn-secondary:hover {
-            background: #00d4ff;
-            color: #1a1a1a;
-        }
-
-        .hero-graphic {
-            background: linear-gradient(135deg, #00d4ff20 0%, #0099cc20 100%);
-            border-radius: 12px;
-            padding: 60px 40px;
-            text-align: center;
-            font-size: 120px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .graphic-text {
-            font-size: 16px;
-            color: #00d4ff;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        /* LEVEL 2: PROOF OF CONCEPT */
-        .proof-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: #00d4ff;
-        }
-
-        .proof-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .proof-image {
-            background: linear-gradient(135deg, #00d4ff20 0%, #0099cc20 100%);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            font-size: 100px;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .proof-text h3 {
-            margin-bottom: 20px;
-        }
-
-        .proof-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .stat-card {
-            background: #f5f5f5;
-            border-left: 4px solid #00d4ff;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .stat-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #00d4ff;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .partners-section {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 30px;
-        }
-
-        .partners-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-        }
-
-        .partner-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .partner-badge {
-            background: #f0f9ff;
-            border: 1px solid #00d4ff;
-            color: #0c4a6e;
-            padding: 10px 20px;
-            border-radius: 24px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* LEVEL 3: TRACTION TABLE */
-        .traction-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .traction-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .traction-table th {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 18px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .traction-table td {
-            padding: 18px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .traction-table tr:hover {
-            background: #f9fafb;
-        }
-
-        .traction-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .metric-name {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .metric-value {
-            color: #00d4ff;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .metric-status {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        /* LEVEL 4: TEAM MAGIC */
-        .team-section {
-            padding: 80px 0;
-            background: #f9fafb;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .team-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .team-image {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            background: #f0f0f0;
-        }
-
-        .team-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-info {
-            padding: 25px;
-        }
-
-        .team-name {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-
-        .team-role {
-            color: #00d4ff;
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .team-superpower {
-            background: #f0f9ff;
-            border-left: 4px solid #00d4ff;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #0c4a6e;
-        }
-
-        .team-bio {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        /* LEVEL 5: CTA SECTION */
-        .cta-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta-headline {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .cta-text {
-            font-size: 18px;
-            margin-bottom: 40px;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 14px 40px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-btn-primary {
-            background: #00d4ff;
-            color: #1a1a1a;
-        }
-
-        .cta-btn-primary:hover {
-            background: white;
-            transform: translateY(-3px);
-        }
-
-        .cta-btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-btn-secondary:hover {
-            background: white;
-            color: #1a1a1a;
-        }
-
-        /* LEVEL 6: TRUST BOOST */
-        .trust-section {
-            padding: 80px 0;
-        }
-
-        .trust-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .trust-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .trust-card:hover {
-            border-color: #00d4ff;
-            box-shadow: 0 10px 30px rgba(0,212,255,0.1);
-        }
-
-        .trust-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .trust-card h4 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
-        }
-
-        .trust-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .gdpr-badge {
-            display: inline-block;
-            background: #d1fae5;
-            color: #065f46;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            margin: 20px 0;
-        }
-
-        .quote-section {
-            background: #f9fafb;
-            border-left: 4px solid #00d4ff;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 40px 0;
-            font-size: 16px;
-            color: #666;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-            .proof-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 32px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-            .section {
-                padding: 40px 0;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">HAVENIS AI</div>
-            <div class="nav-links">
-                <a href="#technology" class="nav-link">Technologie</a>
-                <a href="#proof" class="nav-link">Proof</a>
-                <a href="#traction" class="nav-link">Traction</a>
-                <a href="#team" class="nav-link">Team</a>
-                <a href="#contact" class="nav-link">Kontakt</a>
-            </div>
-            <div class="cta-group">
-                <button id="lang-de" class="lang-btn active">DE</button>
-                <button id="lang-en" class="lang-btn">EN</button>
-                <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Kontakt</button>
-            </div>
-        </div>
+<a class="sr-only" href="#main" data-i18n="skip_to_content">Zum Inhalt springen</a>
+<header>
+ <a class="logo" href="#">HAVENIS-AI</a>
+  <div class="header-controls">
+    <nav class="main-nav" aria-label="Hauptnavigation"> 
+      <a href="#partners" data-i18n="nav_partners">Design‑Partner</a>
+      <a href="#why-now" data-i18n="nav_why">Warum jetzt?</a>
+      <a href="#how-it-works" data-i18n="nav_training">KI-Training</a> 
+      <a href="#team" data-i18n="nav_team">Team</a>
+      <a href="#pilot-results" data-i18n="nav_pilot">Pilot-Ergebnisse</a>
+      <a href="#investors" data-i18n="nav_inv">Investoren</a>
+      <a href="https://calendly.com/havenis-ai/intro-15" target="_blank" rel="noopener" data-i18n="nav_call">Intro‑Call</a> 
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="#contact" data-i18n="nav_contact">Kontakt</a> 
     </nav>
+    <div id="lang-switcher">
+        <button class="lang-btn active" data-lang-code="de">DE</button>
+        <button class="lang-btn" data-lang-code="en">EN</button>
+    </div>
+    <button class="mobile-menu-toggle" aria-controls="main-nav" aria-expanded="false">
+        <span class="sr-only">Menü öffnen/schließen</span>
+        <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+ <section class="hero fade-in"> 
+  <div> 
+   <h1 data-i18n="hero_h1">KI, die wahrnimmt – ohne zu berühren</h1> 
+   <p data-i18n="hero_p">Kontaktlose Erkennung von Anwesenheit, Atmung und Bewegungsmustern – für Sicherheit, Pflege und Komfort.</p> 
+   <a href="#partners" class="btn btn-primary" data-i18n="hero_access_btn">🚀 Early Access</a> 
+   <a href="#technology" class="btn btn-outline" data-i18n="hero_tech_btn">📶 Technologie</a> 
+   <div class="mt-1 muted">
+        <span class="badge" data-i18n="badge_privacy">🔒 Privacy‑by‑Design</span>
+        <span class="badge" data-i18n="badge_device">🧠 On‑Device</span>
+        <span class="badge" data-i18n="badge_wifi">📡 Bestehendes Wi‑Fi</span>
+    </div> 
+  </div> 
+  <div class="hero-visual" aria-hidden="true"> 
+   <div class="wifi-visual"><div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="center-dot"></div></div> 
+  </div> 
+ </section> 
+ <section id="why-now" class="fade-in"> 
+  <h2 class="section-title" data-i18n="why_now_h2">Warum jetzt?</h2><p class="subtitle" data-i18n="why_now_subtitle">Technische Reife + Privacy‑Shift + Kosten/Nutzen.</p> 
+  <div class="uses"> 
+   <div class="use-card"><div class="emoji-icon">📶</div><h3 data-i18n="why_now_c1_h">Wi‑Fi 6/7 + CSI</h3><p data-i18n="why_now_c1_p">Stabilere Metriken, höhere Auflösung und Zuverlässigkeit.</p></div> 
+   <div class="use-card"><div class="emoji-icon">🔏</div><h3 data-i18n="why_now_c2_h">Privacy‑Shift</h3><p data-i18n="why_now_c2_p">Wachsende Ablehnung von Kameras in Privaträumen.</p></div> 
+   <div class="use-card"><div class="emoji-icon">⚙️</div><h3 data-i18n="why_now_c3_h">Edge‑AI</h3><p data-i18n="why_now_c3_p">Leistungsstarke NPUs ermöglichen lokale Echtzeit-Analyse.</p></div> 
+   <div class="use-card"><div class="emoji-icon">💸</div><h3 data-i18n="why_now_c4_h">Kosten</h3><p data-i18n="why_now_c4_p">Nutzt vorhandene APs – kein dedizierter Sensor-Kauf.</p></div> 
+  </div> 
+ </section> 
+ <section id="technology" class="fade-in"> 
+  <h2 class="section-title" data-i18n="tech_h2">Wie Wi‑Fi‑Sensing funktioniert</h2><p class="subtitle" data-i18n="tech_subtitle">Bewegung verändert die Reflexion von Funksignalen. Unsere KI-Modelle interpretieren diese winzigen Muster in Echtzeit.</p> 
+  <div class="tech-grid"> 
+   <div class="tech-card"><div class="emoji-icon">📡</div><h3 data-i18n="tech_c1_h">1. Signal‑Erfassung</h3><p data-i18n="tech_c1_p">Wi-Fi Access Points senden und empfangen ständig Signale. Jede Bewegung – selbst die Atmung – verändert diese Signale auf charakteristische Weise (CSI-Daten).</p></div> 
+   <div class="tech-card"><div class="emoji-icon">🧠</div><h3 data-i18n="tech_c2_h">2. KI‑Dekodierung</h3><p data-i18n="tech_c2_p">Ein lokales Deep-Learning-Modell analysiert die CSI-Datenströme und extrahiert daraus anonyme Bewegungsprofile, Atemraten und Körperhaltungen – ohne Cloud.</p></div> 
+   <div class="tech-card"><div class="emoji-icon">🔔</div><h3 data-i18n="tech_c3_h">3. Nützliche Ereignisse</h3><p data-i18n="tech_c3_p">Die erkannten Muster werden in konkrete Events übersetzt: Sturz erkannt, Person anwesend, unruhiger Schlaf. Diese Events lösen dann Alarme oder Aktionen aus.</p></div> 
+  </div> 
+ </section>
 
-    <!-- LEVEL 1: HERO CLAIM -->
-    <section id="technology" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div>
-                    <div class="hero-headline" data-de="WiFi erkennt Leben" data-en="WiFi Recognizes Life">
-                        WiFi erkennt Leben
-                    </div>
-                    <div class="hero-claim" data-de="HAVENIS AI – Vitalerkennung durch WiFi. Edge-KI für ein gesundes, sicheres Zuhause." data-en="HAVENIS AI – Vital recognition through WiFi. Edge AI for a healthy, safe home.">
-                        HAVENIS AI – Vitalerkennung durch WiFi. Edge-KI für ein gesundes, sicheres Zuhause.
-                    </div>
-                    <p class="hero-subtext" data-de="Keine Wearables. Keine Kameras. Nur WiFi und intelligente Algorithmen. Erfassung von Herzfrequenz, Atemfrequenz, Bewegung – kontaktlos, datenschutzkonform, mit ±2% Genauigkeit." data-en="No wearables. No cameras. Just WiFi and smart algorithms. Capture heart rate, respiration, movement — contactless, privacy-compliant, with ±2% accuracy.">
-                        Keine Wearables. Keine Kameras. Nur WiFi und intelligente Algorithmen.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" onclick="document.getElementById('proof').scrollIntoView({behavior: 'smooth'});" data-de="Technologie entdecken" data-en="Discover Technology">Technologie entdecken</button>
-                        <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});" data-de="Demo anfordern" data-en="Request Demo">Demo anfordern</button>
-                    </div>
-                </div>
-                <div class="hero-graphic">
-                    <div>📡</div>
-                    <div class="graphic-text" data-de="WiFi-Sensing Innovation" data-en="WiFi-Sensing Innovation">WiFi-Sensing Innovation</div>
-                </div>
+ <section id="how-it-works" class="fade-in">
+    <h2 class="section-title" data-i18n="howitworks_h2">Vom Funksignal zur Körperhaltung</h2>
+    <p class="subtitle" data-i18n="howitworks_subtitle">Unsere Technologie basiert auf dem Prinzip des "Knowledge Distillation", inspiriert durch Forschung der Carnegie Mellon University ("DensePose from WiFi").</p>
+    <div class="grid grid-2">
+        <div class="use-card">
+            <h3 class="center" data-i18n="howitworks_train_h">Wissenstransfer: Wie die KI lernt</h3>
+            <p class="muted center" data-i18n="howitworks_train_p">Im Labor bringen wir unserer KI bei, Wi-Fi-Muster mit Körperhaltungen zu verknüpfen. Eine Kamera-KI dient dabei als "Lehrer", der sein Wissen an die Wi-Fi-KI ("Schüler") weitergibt.</p>
+            <div class="distillation-process mt-2">
+                <div data-i18n="howitworks_teacher">👁️ Kamera (Lehrer-KI)</div>
+                <div class="arrow">→</div>
+                <div data-i18n="howitworks_student">📶 Wi-Fi Modell (Schüler-KI)</div>
             </div>
+            <p class="mt-2 center"><strong data-i18n="howitworks_key">Das Wichtigste:</strong> <span data-i18n="howitworks_key_p">Dieser Prozess findet nur einmalig bei uns statt. Beim Kunden wird **niemals** eine Kamera eingesetzt.</span></p>
         </div>
-    </section>
-
-    <!-- LEVEL 2: PROOF OF CONCEPT -->
-    <section id="proof" class="proof-section">
-        <div class="container">
-            <h2 class="section-title" data-de="🧪 Proof of Concept" data-en="🧪 Proof of Concept">🧪 Proof of Concept</h2>
-
-            <div class="proof-grid">
-                <div class="proof-image">
-                    <div>🔴🟠🟡</div>
-                    <div class="graphic-text" style="font-size: 14px; margin-top: 20px;" data-de="WiFi Heatmap Demo" data-en="WiFi Heatmap Demo">WiFi Heatmap Demo</div>
-                </div>
-                <div class="proof-text">
-                    <h3 data-de="Real-World Validation" data-en="Real-World Validation">Real-World Validation</h3>
-                    <p data-de="Unsere Technologie wird derzeit in 3 aktiven Pilotinstallationen getestet und validiert. Echte Daten, echte Nutzer, echte KPIs." data-en="Our technology is currently tested and validated in 3 active pilot installations. Real data, real users, real KPIs.">
-                        Unsere Technologie wird derzeit in 3 aktiven Pilotinstallationen getestet.
-                    </p>
-
-                    <div class="proof-stats">
-                        <div class="stat-card">
-                            <div class="stat-value">±2%</div>
-                            <div class="stat-label" data-de="Herzfrequenz Genauigkeit" data-en="Heart Rate Accuracy">Herzfrequenz Genauigkeit</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">±3%</div>
-                            <div class="stat-label" data-de="Atemfrequenz Genauigkeit" data-en="Respiration Accuracy">Atemfrequenz Genauigkeit</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value"><100ms</div>
-                            <div class="stat-label" data-de="Edge Latenz" data-en="Edge Latency">Edge Latenz</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">100%</div>
-                            <div class="stat-label" data-de="GDPR Konform" data-en="GDPR Compliant">GDPR Konform</div>
-                        </div>
-                    </div>
-
-                    <div class="partners-section">
-                        <div class="partners-title" data-de="🤝 Validierungspartner" data-en="🤝 Validation Partners">🤝 Validierungspartner</div>
-                        <div class="partner-list">
-                            <div class="partner-badge">TU Berlin</div>
-                            <div class="partner-badge">Charité Hospital</div>
-                            <div class="partner-badge">Bosch Smart Home</div>
-                            <div class="partner-badge">Pflegezentrum Mitte</div>
-                            <div class="partner-badge">Telemedizin Netzwerk</div>
-                        </div>
-                    </div>
-                </div>
+        <div class="use-card">
+            <h3 class="center" data-i18n="howitworks_result_h">Das Ergebnis: Anonyme Ereignisse</h3>
+            <p class="muted center" data-i18n="howitworks_result_p">Im Betrieb analysiert die fertig trainierte KI ausschließlich die anonymen Funksignale und klassifiziert die Haltung der Person im Raum – 100% privat und diskret.</p>
+             <div class="distillation-process mt-2">
+                <div data-i18n="howitworks_input">📡 Wi-Fi Signal</div>
+                <div class="arrow">→</div>
+                <div data-i18n="howitworks_output">🧍 Stehend / 🪑 Sitzend / 🛌 Liegend / 🚑 Gestürzt</div>
             </div>
+            <p class="mt-2 center"><strong data-i18n="howitworks_privacy">Ihr Vorteil:</strong> <span data-i18n="howitworks_privacy_p">Sie erhalten wertvolle Informationen ohne die Privatsphäre von Personen zu verletzen.</span></p>
         </div>
-    </section>
+    </div>
+ </section>
+ 
+ <section id="applications" class="fade-in"> 
+  <h2 class="section-title" data-i18n="app_h2">Anwendungsbereiche</h2><p class="subtitle" data-i18n="app_subtitle">Von Smart Care bis Industrie.</p> 
+  <div class="uses"> 
+   <div class="use-card"><div class="emoji-icon">🏥</div><h3 data-i18n="app_c1_h">Gesundheit & Pflege</h3><p data-i18n="app_c1_p">Sturz, Atem, Präsenz – diskret & respektvoll.</p></div> 
+   <div class="use-card"><div class="emoji-icon">🏠</div><h3 data-i18n="app_c2_h">Smart Living</h3><p data-i18n="app_c2_p">Räume reagieren intuitiv – ohne Sprache/Touch.</p></div> 
+   <div class="use-card"><div class="emoji-icon">🛡️</div><h3 data-i18n="app_c3_h">Sicherheit</h3><p data-i18n="app_c3_p">Unbefugte Präsenz in sensiblen Zonen – ohne Kamera.</p></div> 
+   <div class="use-card"><div class="emoji-icon">🏭</div><h3 data-i18n="app_c4_h">Industrie 4.0</h3><p data-i18n="app_c4_p">Gefahrenzonen-Erkennung in Echtzeit.</p></div> 
+  </div> 
+ </section> 
+ <section id="team" class="fade-in"> 
+  <h2 class="section-title" data-i18n="team_h2">Team</h2><p class="subtitle" data-i18n="team_subtitle">Leadership: RF/Edge‑AI, Operations, Finance.</p> 
+  <div class="team-grid"> 
+    <div class="team-card">
+        <img src="assets/images/ceo_kuss.jpg" alt="Porträt von Danilo Kuss, CEO von HAVENIS-AI" class="team-avatar">
+        <h3 data-i18n="team_m1_h">Danilo Kuss</h3>
+        <p class="muted" data-i18n="team_m1_p">CEO · Produkt, Partnerschaften, Regulatorik</p>
+    </div>
+    <div class="team-card">
+        <img src="assets/images/coo_mueller.jpg" alt="Porträt von Sarah Müller, COO" class="team-avatar">
+        <h3 data-i18n="team_m2_h">Sarah Müller</h3>
+        <p class="muted" data-i18n="team_m2_p">COO · Operations, Piloten, Prozesse</p>
+    </div>
+    <div class="team-card">
+        <img src="assets/images/cto_wagner.jpg" alt="Porträt von Thomas Wagner, CTO" class="team-avatar">
+        <h3 data-i18n="team_m3_h">Thomas Wagner</h3>
+        <p class="muted" data-i18n="team_m3_p">CTO · RF/CSI, Edge‑AI, Architektur</p>
+    </div>
+    <div class="team-card">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABfAAAABRnWFlaAAABkAAAABRiWFlaAAABpAAAABRyVFJDAAABuAAAAA5jcHJ0AAABzAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAADAAAAAcAEcASQBNAFAAIABiAHUAaQBsAHQALQBpAG4AIABzAFMAUgBHAEIAIAB0AHIAYQBuAHMAZgBvAHIAbQBj/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAYUBlAMBIgACEQEDEQH/xAAaAAEAAgMBAQAAAAAAAAAAAAAAAgQBBQYDAf/EAD0QAAIBAgQDBgIHBgYDAAAAAAABAgMRBBIhMQVBURMiYXEGFBWRoRcjMjNCcjRScpLBCFNisbLhJJKi/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EACERAAICAgICAwEAAAAAAAAAAAABAhEDIRIxQSIyUXFB/9oADAMBAAIRAxEAPwD6oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAV/Vp3t8iQAAAAAAAAAAAAACJrQunK3UkgNZKzsxAIp9X4kicZNPwAIAAAAAAAAAAAAAAAAAAAAAAAAAB//9oADAMBAAIAAwAAABDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzjryzTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxABfQEBAQEBAQEBAAAAAAAAAAAAAQIDBAUG/8QAPhEAAQMCBAMFBQYEBwAAAAAAAQACEQMhBBJBUTFhcSIEECIyQoGRsTNCUnKhwdHwFCMzNEBTYnOistLxVYP/2gAIAQIBAT8Q/g/6gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7W6o1g46FAAAAAAAAAAAAAAAAAAAAAAAAAC0K1rU5t6+aACtXo3l1o9EAFqtVl3NfMAQ0KFKlwF/AAhoUKVLiL+AAAAAAAAAAAAAAAAAAAAAAAAAB//Z" alt="Porträt von Julia Schmidt, CFO" class="team-avatar">
+        <h3 data-i18n="team_m4_h">Julia Schmidt</h3>
+        <p class="muted" data-i18n="team_m4_p">CFO · Finanzen, Controlling, Reporting</p>
+    </div>
+  </div> 
+ </section> 
 
-    <!-- LEVEL 3: TRACTION TABLE -->
-    <section id="traction" class="traction-section">
-        <div class="container">
-            <h2 class="section-title" data-de="📊 Traction & KPIs" data-en="📊 Traction & KPIs">📊 Traction & KPIs</h2>
-
-            <table class="traction-table">
-                <thead>
-                    <tr>
-                        <th data-de="Kennzahl" data-en="Metric">Kennzahl</th>
-                        <th data-de="Wert" data-en="Value">Wert</th>
-                        <th data-de="Status" data-en="Status">Status</th>
-                        <th data-de="Target (12 Mo)" data-en="Target (12 Mo)">Target (12 Mo)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="metric-name" data-de="Aktive Pilotprojekte" data-en="Active Pilot Projects">Aktive Pilotprojekte</td>
-                        <td class="metric-value">3</td>
-                        <td><span class="metric-status">✓ Active</span></td>
-                        <td class="metric-value">12</td>
-                    </tr>
-                    <tr>
-                        <td class="metric-name" data-de="Messgenauigkeit (HR)" data-en="Measurement Accuracy (HR)">Messgenauigkeit (HR)</td>
-                        <td class="metric-value">±2%</td>
-                        <td><span class="metric-status">✓ Validated</span></td>
-                        <td class="metric-value">±1.5%</td>
-                    </tr>
-                    <tr>
-                        <td class="metric-name" data-de="Edge Latenz" data-en="Edge Latency">Edge Latenz</td>
-                        <td class="metric-value"><100ms</td>
-                        <td><span class="metric-status">✓ Achieved</span></td>
-                        <td class="metric-value"><50ms</td>
-                    </tr>
-                    <tr>
-                        <td class="metric-name" data-de="Strategische Partner" data-en="Strategic Partners">Strategische Partner</td>
-                        <td class="metric-value">5</td>
-                        <td><span class="metric-status">✓ Growing</span></td>
-                        <td class="metric-value">20+</td>
-                    </tr>
-                    <tr>
-                        <td class="metric-name" data-de="MoU Unterzeichnet" data-en="MoUs Signed">MoU Unterzeichnet</td>
-                        <td class="metric-value">2</td>
-                        <td><span class="metric-status">✓ In Progress</span></td>
-                        <td class="metric-value">5</td>
-                    </tr>
-                    <tr>
-                        <td class="metric-name" data-de="Installierte Geräte" data-en="Deployed Devices">Installierte Geräte</td>
-                        <td class="metric-value">150+</td>
-                        <td><span class="metric-status">✓ Active</span></td>
-                        <td class="metric-value">5,000+</td>
-                    </tr>
-                </tbody>
-            </table>
+ <section id="pilot-results" class="fade-in">
+    <h2 class="section-title" data-i18n="pilot_h2">Erste Pilot-Ergebnisse (Anonymisiert)</h2>
+    <p class="subtitle" data-i18n="pilot_subtitle">Die folgenden Daten stammen aus einem 90-tägigen Einsatz in einer führenden deutschen Pflegeeinrichtung.</p>
+    <div class="pilot-kpi-grid">
+        <div class="use-card pilot-kpi-card">
+            <div class="kpi-label" data-i18n="pilot_kpi1_label">Sturzerkennung</div>
+            <div class="kpi-value">&gt;96%</div>
+            <p class="muted" data-i18n="pilot_kpi1_desc">Genauigkeit (True Positives)</p>
         </div>
-    </section>
-
-    <!-- LEVEL 4: TEAM MAGIC -->
-    <section id="team" class="team-section">
-        <div class="container">
-            <h2 class="section-title" data-de="🚀 Team der Zukunft" data-en="🚀 Team of the Future">🚀 Team der Zukunft</h2>
-
-            <div class="team-grid">
-                <!-- CEO -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="/havenis-ai-website/images/Danilo Kuss-CEO.jpg" alt="Danilo Kuss">
-                    </div>
-                    <div class="team-info">
-                        <div class="team-name">Danilo Kuss</div>
-                        <div class="team-role">👔 CEO & Founder</div>
-                        <div class="team-superpower">
-                            <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Edge-KI Vision & Business Strategy" data-en="Edge AI Vision & Business Strategy">Edge-KI Vision & Business Strategy</span>
-                        </div>
-                        <div class="team-bio" data-de="15+ Jahre Tech Entrepreneurship. Zuvor 2 erfolgreiche SaaS-Exits ($45M). Serie-A Veteran." data-en="15+ years tech entrepreneurship. 2 successful SaaS exits ($45M). Series-A veteran.">
-                            15+ Jahre Tech Entrepreneurship. 2 Exits.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTO -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="/havenis-ai-website/images/Dr. Elias Kern-CTO.jpeg" alt="Dr. Elias Kern">
-                    </div>
-                    <div class="team-info">
-                        <div class="team-name">Dr. Elias Kern</div>
-                        <div class="team-role">🔬 CTO & Co-Founder</div>
-                        <div class="team-superpower">
-                            <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Signal Processing & AI Architectures" data-en="Signal Processing & AI Architectures">Signal Processing & AI Architectures</span>
-                        </div>
-                        <div class="team-bio" data-de="PhD EE, 10 Jahre R&D. 5 WiFi-Sensing Patents. Ex-Siemens, Ex-Bosch." data-en="PhD EE, 10 years R&D. 5 WiFi-sensing patents. Ex-Siemens, Ex-Bosch.">
-                            PhD EE, 10 Jahre R&D, 5 Patents
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COO -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="/havenis-ai-website/images/Lara Nguyen-COO.jpg" alt="Lara Nguyen">
-                    </div>
-                    <div class="team-info">
-                        <div class="team-name">Lara Nguyen</div>
-                        <div class="team-role">⚙️ COO & Co-Founder</div>
-                        <div class="team-superpower">
-                            <strong data-de="Superkraft:" data-en="Superpower:">Superkraft:</strong> <span data-de="Data-Driven UX & Healthcare Compliance" data-en="Data-Driven UX & Healthcare Compliance">Data-Driven UX & Healthcare Compliance</span>
-                        </div>
-                        <div class="team-bio" data-de="8 Jahre Healthtech, $50M+ Fundraising. GDPR/CE zertifiziert. Ex-Charité Digital." data-en="8 years healthtech, $50M+ fundraising. GDPR/CE certified. Ex-Charité Digital.">
-                            8 Jahre Healthtech, $50M+ Fundraising
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="use-card pilot-kpi-card">
+            <div class="kpi-label" data-i18n="pilot_kpi2_label">Präsenzerkennung</div>
+            <div class="kpi-value">&lt;0.5s</div>
+            <p class="muted" data-i18n="pilot_kpi2_desc">Latenz bis Event-Meldung</p>
         </div>
-    </section>
-
-    <!-- LEVEL 5: CALL TO ACTION -->
-    <section id="contact" class="cta-section">
-        <div class="container">
-            <h2 class="cta-headline" data-de="Lass uns die Zukunft bauen" data-en="Let's build the future">Lass uns die Zukunft bauen</h2>
-            <p class="cta-text" data-de="Wir suchen strategische Investoren & Deep-Tech-Partner für unsere Seed-Runde 2026. WiFi-Sensing ist die nächste Frontier der kontaktlosen Gesundheitstechnik." data-en="We are seeking strategic investors & deep-tech partners for our Seed round 2026. WiFi-sensing is the next frontier of contactless health tech.">
-                Wir suchen strategische Investoren & Deep-Tech-Partner für unsere Seed-Runde 2026.
-            </p>
-            <div class="cta-buttons">
-                <a href="mailto:investors@havenis-ai.de?subject=Pitch%20Deck%20Anfrage" class="cta-btn cta-btn-primary" data-de="Pitch Deck anfordern" data-en="Request Pitch Deck">📊 Pitch Deck anfordern</a>
-                <a href="mailto:investors@havenis-ai.de?subject=Demo%20anfrage" class="cta-btn cta-btn-primary" data-de="Live Demo buchen" data-en="Book Live Demo">🎥 Live Demo buchen</a>
-                <a href="mailto:investors@havenis-ai.de?subject=Partnership%20Anfrage" class="cta-btn cta-btn-secondary" data-de="Partner werden" data-en="Become a Partner">🤝 Partner werden</a>
-            </div>
+        <div class="use-card pilot-kpi-card">
+            <div class="kpi-label" data-i18n="pilot_kpi3_label">Vitalparameter</div>
+            <div class="kpi-value">±0.4</div>
+            <p class="muted" data-i18n="pilot_kpi3_desc">Mittlere Abweichung (Atemzüge/Min)</p>
         </div>
-    </section>
+    </div>
+    <blockquote>
+      <p data-i18n="pilot_quote">"Die kamerafreie Lösung von HAVENIS-AI war der Schlüssel für die Akzeptanz bei Bewohnern und Personal. Eine bahnbrechende Technologie für die würdevolle Pflege."</p>
+      <footer class="mt-1" data-i18n="pilot_quote_author">— Dr. Eva Brandt, Leitung, Seniorenpflege Zukunft GmbH</footer>
+    </blockquote>
+ </section>
 
-    <!-- LEVEL 6: TRUST BOOST -->
-    <section class="trust-section">
-        <div class="container">
-            <h2 class="section-title" data-de="✨ Vertrauen durch Innovation" data-en="✨ Trust Through Innovation">✨ Vertrauen durch Innovation</h2>
-
-            <div class="quote-section">
-                <strong data-de="„Datenschutz made in Germany trifft auf Edge-Innovation – genau das braucht Healthcare 2026."" data-en="„Privacy made in Germany meets edge-innovation – exactly what healthcare needs in 2026."">"Datenschutz made in Germany trifft auf Edge-Innovation – genau das braucht Healthcare 2026."</strong> <br><span data-de="— Dr. med. Prof. Sarah Müller, Charité Hospital Berlin" data-en="— Dr. med. Prof. Sarah Müller, Charité Hospital Berlin">— Dr. med. Prof. Sarah Müller, Charité Hospital Berlin</span>
-            </div>
-
-            <div class="trust-features">
-                <div class="trust-card">
-                    <div class="trust-icon">🔒</div>
-                    <h4 data-de="100% Privacy First" data-en="100% Privacy First">100% Privacy First</h4>
-                    <p data-de="Keine Bilder, keine ID-Tracking, nur anonyme Signal-Analyse. GDPR, HIPAA & CE-zertifiziert." data-en="No images, no ID tracking, only anonymous signal analysis. GDPR, HIPAA & CE-certified.">Keine Bilder, keine ID-Tracking, nur anonyme Daten</p>
-                </div>
-                <div class="trust-card">
-                    <div class="trust-icon">🧠</div>
-                    <h4 data-de="Edge AI – Lokal verarbeitet" data-en="Edge AI – Locally Processed">Edge AI – Lokal verarbeitet</h4>
-                    <p data-de="Verarbeitung am Router, nicht in der Cloud. Offline-fähig, ultra-sicher." data-en="Processing at router, not in cloud. Offline-capable, ultra-secure.">Verarbeitung am Router, nicht in der Cloud</p>
-                </div>
-                <div class="trust-card">
-                    <div class="trust-icon">🏆</div>
-                    <h4 data-de="Klinisch validiert" data-en="Clinically Validated">Klinisch validiert</h4>
-                    <p data-de="Peer-reviewed Studies, ±2% Genauigkeit, von Ärzte + Forscher validiert." data-en="Peer-reviewed studies, ±2% accuracy, validated by doctors + researchers.">Peer-reviewed, ±2% Genauigkeit</p>
-                </div>
-                <div class="trust-card">
-                    <div class="trust-icon">🌍</div>
-                    <h4 data-de="Made in Germany" data-en="Made in Germany">Made in Germany</h4>
-                    <p data-de="Entwickelt in Berlin, Datenspeicherung in Deutschland, Compliance-First." data-en="Developed in Berlin, data storage in Germany, compliance-first.">Entwickelt in Berlin, Deutschland</p>
-                </div>
-                <div class="trust-card">
-                    <div class="trust-icon">🔌</div>
-                    <h4 data-de="Standard Hardware" data-en="Standard Hardware">Standard Hardware</h4>
-                    <p data-de="Läuft auf jedem WiFi-Router (ASUS, TP-Link, Ubiquiti). Keine proprietären Geräte." data-en="Runs on any WiFi router (ASUS, TP-Link, Ubiquiti). No proprietary devices.">Läuft auf Standard WiFi-Routern</p>
-                </div>
-                <div class="trust-card">
-                    <div class="trust-icon">📊</div>
-                    <h4 data-de="Transparente Metriken" data-en="Transparent Metrics">Transparente Metriken</h4>
-                    <p data-de="Dashboard mit Echtzeit-KPIs, Genauigkeit-Reports, Partner-Testimonials." data-en="Dashboard with real-time KPIs, accuracy reports, partner testimonials.">Transparente KPIs & Reports</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 60px;">
-                <div class="gdpr-badge">✓ GDPR Konform | ✓ HIPAA Ready | ✓ CE Zertifiziert | ✓ Made in Germany</div>
-            </div>
+ <section id="partners" class="fade-in"> 
+  <h2 class="section-title" data-i18n="part_h2">Design‑Partner werden (limitiert)</h2><p class="subtitle" data-i18n="part_subtitle">Gestalten Sie die Zukunft der diskreten Wahrnehmung mit und sichern Sie sich als einer der ersten Partner exklusive Vorteile.</p> 
+  <div class="uses"> 
+   <div class="use-card"><div class="emoji-icon">🤝</div><h3 data-i18n="part_c1_h">Ihr Vorteil</h3><p data-i18n="part_c1_p">Gestalten Sie das Produkt mit, profitieren Sie von bevorzugten Konditionen und positionieren Sie sich als Innovationsführer.</p></div> 
+   <div class="use-card"><div class="emoji-icon">🎯</div><h3 data-i18n="part_c2_h">Definierte Pilot-Ziele</h3><p data-i18n="part_c2_p">Wir definieren gemeinsam klare KPIs für den 90-Tage-Pilot, um den Mehrwert für Ihren Anwendungsfall messbar zu machen.</p></div> 
+   <div class="use-card"><div class="emoji-icon">📝</div><h3 data-i18n="part_c3_h">Einfache Voraussetzungen</h3><p data-i18n="part_c3_p">Sie benötigen lediglich 3–6 Räume für den Test, einen technischen Ansprechpartner und die Bereitschaft für ein NDA/DPIA.</p></div> 
+  </div> 
+  <div class="center mt-2"><a href="#contact" class="btn btn-primary" data-i18n="part_btn">🚀 Für Pilot bewerben</a></div> 
+ </section> 
+ <section id="investors" class="fade-in"> 
+  <h2 class="section-title" data-i18n="inv_h2">Für Investoren</h2><p class="subtitle" data-i18n="inv_subtitle">Wir schließen unsere Pre‑Seed Runde (400–600k€) zur Skalierung unserer Pilotprojekte und zur Produktentwicklung ab.</p> 
+  <div class="uses"> 
+   <div class="use-card"><div class="emoji-icon">🧭</div><h3 data-i18n="inv_c1_h">Meilensteine</h3><p data-i18n="inv_c1_p">Abschluss von 2 weiteren Pilot-MoUs (Q3), Skalierung der Hardware-Integration (Q4), erste Lizenzverträge (Q1/26).</p></div> 
+   <div class="use-card"><div class="emoji-icon">📈</div><h3 data-i18n="inv_c2_h">Use of Funds</h3><p data-i18n="inv_c2_p">KI/Software-Entwicklung (40%), Hardware-Prototyping & Piloten (30%), Personal (20%), Recht & Vertrieb (10%).</p></div> 
+   <div class="use-card"><div class="emoji-icon">📩</div><h3 data-i18n="inv_c4_h">Direkter Draht</h3> 
+     <p class="center" style="display: flex; flex-direction: column; gap: 1rem;">
+            <a href="mailto:HAVENIS-AI@web.de?subject=Investor%20Intro%3A%20Pitch%20Deck%20Anfrage" class="btn btn-outline" data-i18n="inv_c4_btn1">Pitch Deck anfordern</a> 
+            <a href="https://calendly.com/havenis-ai/intro-15" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="inv_c4_btn2">15‑Min Intro‑Call buchen</a>
+        </p> 
+   </div> 
+  </div> 
+ </section>
+ 
+ <section id="contact" class="fade-in"> 
+  <h2 class="section-title" data-i18n="contact_h2">Kontakt</h2><p class="subtitle" data-i18n="contact_subtitle">Wir freuen uns auf Ihre Nachricht und antworten innerhalb von 24 Stunden.</p> 
+  <div class="contact mt-1" data-i18n="contact_direct_info"> 
+   <strong>Direktkontakt</strong><br> Herr D. Kuss · Tel: <a href="tel:+493361747868">+49 3361 747868</a> · Mobil: <a href="tel:+4915510926776">+49 15510 926776</a><br> E‑Mail: <a href="mailto:HAVENIS-AI@web.de">HAVENIS-AI@web.de</a> · Web: <a href="https://www.havenis-ai.vercel.app" target="_blank" rel="noopener">www.havenis-ai.vercel.app</a> 
+  </div> 
+  <form id="contactForm" class="contact mt-1" action="https://formspree.io/f/xkgqekoa" method="POST">
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="name" data-i18n="form_label_name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
         </div>
-    </section>
-
-    <script src="/havenis-ai-website/script.js"></script>
+        <div class="form-group">
+            <label for="email" data-i18n="form_label_email">E-Mail</label>
+            <input type="email" id="email" name="_replyto" required autocomplete="email">
+        </div>
+        <div class="form-group full">
+            <label for="org" data-i18n="form_label_org">Organisation (optional)</label>
+            <input type="text" id="org" name="organization" autocomplete="organization">
+        </div>
+        <div class="form-group full">
+            <label for="message" data-i18n="form_label_msg">Nachricht</label>
+            <textarea id="message" name="message" required placeholder="Deine Frage oder Projektidee..." data-i18n-placeholder="form_placeholder_msg"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Neue Anfrage für HAVENIS-AI von {{name}}">
+        <input type="text" name="_gotcha" style="display:none">
+        <label class="muted form-group full" data-i18n="form_label_consent">
+            <input type="checkbox" name="consent_contact" required> Ich habe die <a href="#datenschutz">Datenschutzhinweise</a> gelesen und akzeptiere sie.
+        </label>
+        <button type="submit" class="btn btn-primary form-group full" style="justify-content:center" data-i18n="form_btn_send">📨 Nachricht senden</button>
+    </div>
+  </form> 
+ </section> 
+ <section id="faq" class="fade-in"> 
+  <h2 class="section-title" data-i18n="faq_h2">Häufig gestellte Fragen (FAQ)</h2><p class="subtitle" data-i18n="faq_subtitle">Antworten zu Technologie, Datenschutz und den Pilotprojekten.</p> 
+  <div class="contact"> 
+   <details><summary><strong data-i18n="faq_q1">Welche Router werden unterstützt?</strong></summary><p data-i18n="faq_a1">Für eine präzise Erfassung benötigen wir Zugriff auf feingranulare Kanalinformationen (CSI). Dies wird von vielen modernen Wi-Fi 6/7 Access Points sowie Geräten mit OpenWrt oder spezifischen Intel/Atheros-Chipsätzen unterstützt. Die genaue Kompatibilität prüfen wir im technischen Vorgespräch.</p></details> 
+   <details><summary><strong data-i18n="faq_q2">Können einzelne Personen identifiziert oder verfolgt werden?</strong></summary><p data-i18n="faq_a2">Nein, absolut nicht. Das System führt keine biometrische Identifikation durch. Es erkennt anonyme Muster und kann maximal die Anzahl der Personen im Raum schätzen. Alle erzeugten Ereignisse (wie "Sturz") sind nicht an eine Identität geknüpft.</p></details> 
+   <details><summary><strong data-i18n="faq_q3">Wie zuverlässig ist die Erkennung?</strong></summary><p data-i18n="faq_a3">Unsere Ziel-KPIs für typische Innenräume sind eine Falsch-Negativ-Rate (übersehener Sturz) von unter 5% und eine Falsch-Positiv-Rate (Fehlalarm) von unter 8%. Die Genauigkeit hängt von Faktoren wie Raumgröße, Möblierung und Störquellen ab und wird im Pilotprojekt validiert.</p></details> 
+   <details><summary><strong data-i18n="faq_q4">Funktioniert die Erkennung auch bei mehreren Personen?</strong></summary><p data-i18n="faq_a4">Ja. Unsere Modelle sind darauf trainiert, auch in Umgebungen mit mehreren Personen robuste Ergebnisse zu liefern, beispielsweise um die Anwesenheit in einem Raum zu zählen oder einen Sturz trotz Anwesenheit einer zweiten Person zu erkennen. Die Komplexität beeinflusst jedoch die Genauigkeit.</p></details> 
+  </div> 
+ </section> 
+ <section class="fade-in" style="max-width:900px"> 
+  <div class="use-card"><div class="emoji-icon">⚕️</div><strong data-i18n="note_strong">Wichtiger Hinweis:</strong><p class="subtitle mb-0" data-i18n="note_p">Dieses System ist kein zertifiziertes Medizinprodukt. Es dient der Unterstützung und Informationsgewinnung und darf nicht als alleinige Grundlage für medizinische oder sicherheitskritische Entscheidungen verwendet werden.</p></div> 
+ </section>
+</main>
+<footer> 
+ <div class="footer-links"> 
+  <a href="#impressum" data-i18n="footer_imprint">Impressum</a>
+  <a href="#datenschutz" data-i18n="footer_privacy">Datenschutz</a>
+  <a href="#agb" data-i18n="footer_terms">AGB</a> 
+  <a href="mailto:HAVENIS-AI@web.de">HAVENIS-AI@web.de</a><a href="tel:+493361747868">+49 3361 747868</a> 
+ </div> 
+ <p data-i18n="footer_location">Fürstenwalde, Deutschland | Entwicklung & Forschung</p> 
+ <p data-i18n="footer_copy">© 2025 HAVENIS-AI UG (<abbr title="in Gründung">i.Gr.</abbr>)</p>
+</footer>
+<section id="impressum" class="fade-in"><h2 class="section-title" data-i18n="imprint_h2">Impressum</h2> 
+ <div class="contact" data-i18n="imprint_p1">
+    <p>Angaben gemäß § 5 TMG:<br><strong>HAVENIS-AI UG (<abbr title="in Gründung">i.Gr.</abbr>)</strong><br>Damaschkeweg 1<br>15517 Fürstenwalde<br>Deutschland</p>
+    <p class="mt-1"><strong>Vertreten durch:</strong><br>Herrn Danilo Kuss</p>
+ </div>
+    <p class="mt-2" data-i18n="imprint_p2"><strong>Kontakt:</strong><br>E‑Mail: <a href="mailto:HAVENIS-AI@web.de">HAVENIS-AI@web.de</a><br>Telefon: <a href="tel:+493361747868">+49 3361 747868</a><br>Mobil: <a href="tel:+4915510926776">+49 15510 926776</a></p>
+</section>
+<section id="datenschutz" class="fade-in"><h2 class="section-title" data-i18n="privacy_h2">Datenschutzerklärung</h2> 
+ <div class="contact" style="line-height:1.7"> 
+  <p data-i18n="privacy_p1"><strong>Verantwortlicher im Sinne der DSGVO:</strong> HAVENIS-AI UG (<abbr title="in Gründung">i.Gr.</abbr>), Damaschkeweg 1, 15517 Fürstenwalde, Deutschland.</p> 
+  <p data-i18n="privacy_p2"><strong>Verarbeitungszwecke:</strong> Bereitstellung und Optimierung der Webseite, Bearbeitung von Kontaktanfragen (Art. 6 Abs. 1 lit. b DSGVO), Versand von Informationen an Design-Partner und Investoren (Art. 6 Abs. 1 lit. a DSGVO).</p> 
+  <p data-i18n="privacy_p3"><strong>Datenkategorien:</strong> Wir verarbeiten Nutzungsdaten (IP-Adresse, Browser-Version), Kontaktdaten (Name, E-Mail, Organisation) und Kommunikationsinhalte. Es findet keine Erfassung von biometrischen, Audio- oder Videodaten über diese Webseite statt.</p> 
+  <p data-i18n="privacy_p4"><strong>Speicherdauer:</strong> Kontaktdaten werden nach Abschluss der Konversation gelöscht, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen. Daten von Interessenten werden bis zum Widerruf der Einwilligung gespeichert.</p> 
+ </div></section>
+<section id="agb" class="fade-in"><h2 class="section-title" data-i18n="agb_h2">Allgemeine Geschäftsbedingungen (AGB) - Pilotphase</h2> 
+ <div class="contact" style="max-width: 800px; text-align: left;">
+    <p data-i18n="agb_p1">Die folgenden Punkte stellen einen Auszug der Kernregelungen für unsere Design-Partner-Piloten dar. Detaillierte Bedingungen werden im individuellen Pilotvertrag festgelegt.</p>
+    <h3 class="mt-2" data-i18n="agb_h3_1">1. Geltungsbereich und Vertragsgegenstand</h3>
+    <p data-i18n="agb_p2">Diese Bedingungen regeln die befristete Bereitstellung unserer Hard- und Software (das "System") zu Test- und Evaluierungszwecken ("Pilot"). Das System bleibt Eigentum der HAVENIS-AI UG (<abbr title="in Gründung">i.Gr.</abbr>). Dem Partner wird ein nicht-exklusives, nicht-übertragbares Nutzungsrecht für die Dauer des Piloten eingeräumt.</p>
+    <h3 class="mt-2" data-i18n="agb_h3_2">2. Leistungsumfang und Haftung</h3>
+    <p data-i18n="agb_p3">HAVENIS-AI stellt das System bereit und leistet Support bei der Installation und Konfiguration. Da es sich um ein Vorab-System handelt, wird es "as is" ohne Garantien für eine ununterbrochene Funktion bereitgestellt. Die Haftung für Schäden, die nicht auf Vorsatz oder grober Fahrlässigkeit beruhen, ist ausgeschlossen.</p>
+    <h3 class="mt-2" data-i18n="agb_h3_3">3. Datenschutz und Vertraulichkeit</h3>
+    <p data-i18n="agb_p4">Alle durch das System erfassten Daten werden lokal ("on-device") verarbeitet. Eine Übermittlung an HAVENIS-AI erfolgt nur nach expliziter Zustimmung zu Forschungszwecken und in vollständig anonymisierter Form. Beide Parteien verpflichten sich zur strengen Vertraulichkeit bezüglich der Technologie und der im Rahmen des Piloten gewonnenen Erkenntnisse (NDA).</p>
+</div></section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Welche Router werden unterstützt?","acceptedAnswer":{"@type":"Answer","text":"Für eine präzise Erfassung benötigen wir Zugriff auf feingranulare Kanalinformationen (CSI). Dies wird von vielen modernen Wi-Fi 6/7 Access Points sowie Geräten mit OpenWrt oder spezifischen Intel/Atheros-Chipsätzen unterstützt."}},{"@type":"Question","name":"Können einzelne Personen identifiziert oder verfolgt werden?","acceptedAnswer":{"@type":"Answer","text":"Nein, absolut nicht. Das System führt keine biometrische Identifikation durch. Es erkennt anonyme Muster und kann maximal die Anzahl der Personen im Raum schätzen."}},{"@type":"Question","name":"Wie zuverlässig ist die Erkennung?","acceptedAnswer":{"@type":"Answer","text":"Unsere Ziel-KPIs für typische Innenräume sind eine Falsch-Negativ-Rate (übersehener Sturz) von unter 5% und eine Falsch-Positiv-Rate (Fehlalarm) von unter 8%."}},{"@type":"Question","name":"Funktioniert die Erkennung auch bei mehreren Personen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Unsere Modelle sind darauf trainiert, auch in Umgebungen mit mehreren Personen robuste Ergebnisse zu liefern, beispielsweise um die Anwesenheit in einem Raum zu zählen."}}]}</script>
+<script src="script.js"></script>
 </body>
 </html>
