@@ -1,244 +1,260 @@
-// HAVENIS AI Pitchdeck - Interactive JavaScript
+// Sprachen-Toggle
+const deBtn = document.getElementById('lang-de');
+const enBtn = document.getElementById('lang-en');
+let currentLang = 'de';
 
-let currentSlide = 1;
-const totalSlides = 14;
-let currentLanguage = 'de';
+function setLanguage(lang) {
+    currentLang = lang;
+    const elements = document.querySelectorAll('[data-de][data-en]');
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-  showSlide(1);
-  setupEventListeners();
-  drawTechArchitecture();
-  drawHeatmap();
-  setLanguage('de');
-  addSlideCounter();
+    elements.forEach(el => {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+        } else {
+            el.textContent = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+        }
+    });
+
+    // Button Status aktualisieren
+    if (lang === 'de') {
+        deBtn.classList.add('active');
+        enBtn.classList.remove('active');
+    } else {
+        enBtn.classList.add('active');
+        deBtn.classList.remove('active');
+    }
+
+    localStorage.setItem('language', lang);
+}
+
+deBtn.addEventListener('click', () => setLanguage('de'));
+enBtn.addEventListener('click', () => setLanguage('en'));
+
+// Sprache beim Laden wiederherstellen
+window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('language') || 'de';
+    setLanguage(savedLang);
 });
 
-// Setup Event Listeners
-function setupEventListeners() {
-  document.getElementById('prev-btn').addEventListener('click', prevSlide);
-  document.getElementById('next-btn').addEventListener('click', nextSlide);
-  document.getElementById('pdf-btn').addEventListener('click', exportPDF);
-  document.getElementById('de-btn').addEventListener('click', () => setLanguage('de'));
-  document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+// Smooth Scroll für Navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-  // Keyboard Navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft') prevSlide();
-    if (e.key === 'ArrowRight') nextSlide();
-  });
-}
+// Navigation Highlight beim Scrollen
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-// Show Slide
-function showSlide(n) {
-  const slides = document.querySelectorAll('.slide');
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
 
-  if (n > totalSlides) currentSlide = 1;
-  if (n < 1) currentSlide = totalSlides;
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
 
-  slides.forEach(slide => slide.classList.remove('active'));
-  slides[currentSlide - 1].classList.add('active');
+// Fade-in Animation beim Scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
-  updateSlideCounter();
-}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
-// Next Slide
-function nextSlide() {
-  currentSlide++;
-  if (currentSlide > totalSlides) currentSlide = 1;
-  showSlide(currentSlide);
-}
+document.querySelectorAll('.mission-card, .team-card, .feature-item, .tech-step').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+});
 
-// Previous Slide
-function prevSlide() {
-  currentSlide--;
-  if (currentSlide < 1) currentSlide = totalSlides;
-  showSlide(currentSlide);
-}
-
-// Set Language
-function setLanguage(lang) {
-  currentLanguage = lang;
-
-  // Update button states
-  document.getElementById('de-btn').classList.toggle('active', lang === 'de');
-  document.getElementById('en-btn').classList.toggle('active', lang === 'en');
-
-  // Update all text elements
-  document.querySelectorAll('[data-de][data-en]').forEach(element => {
-    if (element.tagName === 'LI' || element.tagName === 'P') {
-      element.textContent = element.getAttribute('data-' + lang);
+// Fade-in Animation Definition
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-  });
+`;
+document.head.appendChild(style);
 
-  document.querySelectorAll('[data-de][data-en]').forEach(element => {
-    if (element.tagName === 'H1' || element.tagName === 'H2') {
-      element.textContent = element.getAttribute('data-' + lang);
+// Contact Form
+function sendMessage() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+        alert(currentLang === 'de' ? 'Bitte füllen Sie alle Felder aus' : 'Please fill all fields');
+        return;
     }
-  });
 
-  // Redraw canvas elements with language
-  drawTechArchitecture();
-  drawHeatmap();
+    const subject = currentLang === 'de' ? 'Nachricht von HAVENIS Website' : 'Message from HAVENIS Website';
+    const mailtoLink = `mailto:kontakt@havenis-ai.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(\`Name: \${name}\nEmail: \${email}\n\nNachricht:\n\${message}\`)}`;
+
+    window.location.href = mailtoLink;
+
+    // Clear Form
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
 }
 
-// Draw Tech Architecture
-function drawTechArchitecture() {
-  const canvas = document.getElementById('tech-canvas');
-  if (!canvas) return;
+// PDF Export Funktion
+function exportToPDF() {
+    const content = document.body.innerHTML;
+    const printWindow = window.open('', '', 'height=600,width=800');
 
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>HAVENIS AI Pitchdeck</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #00d4ff; }
+                h2 { color: #1a1a1a; margin-top: 30px; }
+                section { page-break-after: always; padding: 20px 0; }
+                .btn { display: none; }
+                .nav-container { display: none; }
+                .footer { margin-top: 30px; text-align: center; font-size: 0.9em; }
+            </style>
+        </head>
+        <body>
+            <h1>🚀 HAVENIS AI</h1>
+            <p><strong>Revolutionäre Wi-Fi Sensing Technologie für Vitalmonitoring</strong></p>
 
-  // Style
-  ctx.strokeStyle = '#00d4ff';
-  ctx.fillStyle = '#667eea';
-  ctx.lineWidth = 2;
-  ctx.font = 'bold 14px Arial';
-  ctx.fillStyle = '#fff';
+            <h2>Mission</h2>
+            <p>Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring mit Datenschutz an erster Stelle.</p>
 
-  // Edge Device
-  ctx.strokeStyle = '#00d4ff';
-  ctx.strokeRect(50, 80, 120, 80);
-  ctx.fillText('Edge Device', 60, 125);
+            <h2>Technologie</h2>
+            <p>
+                <strong>Wie es funktioniert:</strong><br>
+                1. Analyse von Wi-Fi Signalen<br>
+                2. AI Processing mit ML-Algorithmen<br>
+                3. Präzise Vital-Messungen
+            </p>
 
-  // Arrow 1
-  ctx.strokeStyle = '#00d4ff';
-  ctx.beginPath();
-  ctx.moveTo(170, 120);
-  ctx.lineTo(210, 120);
-  ctx.stroke();
-  ctx.fillText('→', 185, 110);
+            <h2>Features</h2>
+            <ul>
+                <li>Hochgenau: ±2% Messgenauigkeit</li>
+                <li>Echtzeit: Live Vital Monitoring</li>
+                <li>Skalierbar: Für 1-1000 Personen</li>
+                <li>Sicher: End-to-End verschlüsselt</li>
+            </ul>
 
-  // Local AI
-  ctx.strokeStyle = '#00d4ff';
-  ctx.strokeRect(210, 80, 120, 80);
-  ctx.fillText('Edge-KI', 230, 125);
+            <h2>Team</h2>
+            <p>
+                Unser Team besteht aus Experten in:<br>
+                • KI und Machine Learning<br>
+                • Telekommunikation und Wi-Fi<br>
+                • Healthcare und Medizin<br>
+                • Datenschutz und Compliance<br>
+                • Business Development
+            </p>
 
-  // Arrow 2
-  ctx.beginPath();
-  ctx.moveTo(330, 120);
-  ctx.lineTo(370, 120);
-  ctx.stroke();
+            <h2>Kontakt</h2>
+            <p>
+                Email: kontakt@havenis-ai.de<br>
+                Interessiert an einer Zusammenarbeit? Kontaktieren Sie uns!
+            </p>
 
-  // Cloud
-  ctx.strokeStyle = '#00d4ff';
-  ctx.strokeRect(370, 80, 120, 80);
-  ctx.fillText('Cloud', 400, 125);
+            <hr>
+            <p style="text-align: center; margin-top: 40px;">
+                © 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie
+            </p>
+        </body>
+        </html>
+    `);
 
-  // Arrow 3
-  ctx.beginPath();
-  ctx.moveTo(490, 120);
-  ctx.lineTo(530, 120);
-  ctx.stroke();
+    printWindow.document.close();
 
-  // Analytics
-  ctx.strokeStyle = '#00d4ff';
-  ctx.strokeRect(530, 80, 120, 80);
-  ctx.fillText('Analytics', 550, 125);
-
-  // Bottom layer - Data flow
-  ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
-  ctx.fillRect(50, 200, 600, 150);
-
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 12px Arial';
-  const flowText = currentLanguage === 'de' 
-    ? 'Datenfluss: Wi-Fi Rohdaten → Signal Processing → KI-Inference → Cloud-Speicher'
-    : 'Data Flow: Wi-Fi Raw Data → Signal Processing → AI Inference → Cloud Storage';
-  ctx.fillText(flowText, 60, 280);
-
-  // Legend
-  ctx.fillStyle = 'rgba(102, 126, 234, 0.5)';
-  ctx.fillRect(50, 320, 600, 40);
-  ctx.fillStyle = '#00d4ff';
-  ctx.font = 'bold 11px Arial';
-  const langLabel = currentLanguage === 'de' ? 'Lokal:' : 'Local:';
-  ctx.fillText(langLabel + ' Echtzeit-Verarbeitung | ' + (currentLanguage === 'de' ? 'Cloud:' : 'Cloud:') + ' Speicher & Analyse', 60, 345);
+    setTimeout(() => {
+        printWindow.print();
+    }, 250);
 }
 
-// Draw Heatmap / Data Visualization
-function drawHeatmap() {
-  const canvas = document.getElementById('heatmap-canvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Background
-  ctx.fillStyle = 'rgba(102, 126, 234, 0.1)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // Title
-  ctx.fillStyle = '#00d4ff';
-  ctx.font = 'bold 16px Arial';
-  ctx.fillText('Wi-Fi Signal Heatmap - Vital Detection', 20, 30);
-
-  // Draw heatmap grid
-  const gridSize = 50;
-  const colors = ['#002e7a', '#0056b3', '#00d4ff', '#ff6b6b', '#ff0000'];
-
-  for (let x = 0; x < canvas.width; x += gridSize) {
-    for (let y = 50; y < canvas.height - 50; y += gridSize) {
-      const intensity = Math.random();
-      const colorIndex = Math.floor(intensity * (colors.length - 1));
-      ctx.fillStyle = colors[colorIndex];
-      ctx.globalAlpha = 0.7;
-      ctx.fillRect(x, y, gridSize, gridSize);
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  // Border
-  ctx.strokeStyle = '#00d4ff';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(0, 50, canvas.width, canvas.height - 100);
-
-  // Stats
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 12px Arial';
-  const statsText = currentLanguage === 'de'
-    ? ['Herz: 72 BPM (±2%)', 'Atmung: 16 Züge/Min (±3%)', 'Signal: -45 dBm']
-    : ['Heart: 72 BPM (±2%)', 'Respiration: 16 breaths/min (±3%)', 'Signal: -45 dBm'];
-
-  statsText.forEach((stat, i) => {
-    ctx.fillText(stat, 20, canvas.height - 20 - (i * 25));
-  });
+// Menu Toggle für Mobile
+const menuToggle = document.getElementById('menu-toggle');
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks) {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+    });
 }
 
-// Export PDF
-function exportPDF() {
-  alert(currentLanguage === 'de'
-    ? 'PDF-Export wird vorbereitet...\nBitte verwende deinen Browser-PDF-Export (Strg+P).'
-    : 'PDF export is being prepared...\nPlease use your browser PDF export (Ctrl+P).');
-
-  // Trigger browser print dialog
-  window.print();
-}
-
-// Add Slide Counter
-function addSlideCounter() {
-  const counter = document.createElement('div');
-  counter.className = 'slide-counter';
-  counter.id = 'slide-counter';
-  document.body.appendChild(counter);
-}
-
-// Update Slide Counter
-function updateSlideCounter() {
-  const counter = document.getElementById('slide-counter');
-  if (counter) {
-    counter.textContent = 'Slide ' + currentSlide + ' / ' + totalSlides;
-  }
-}
-
-// Add smooth scroll to all sections
-document.addEventListener('wheel', function(e) {
-  if (Math.abs(e.deltaY) > 50) {
-    if (e.deltaY > 0) {
-      nextSlide();
+// Scroll zu Top Button
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scroll-to-top');
+    if (window.scrollY > 300) {
+        if (!btn) {
+            const scrollBtn = document.createElement('button');
+            scrollBtn.id = 'scroll-to-top';
+            scrollBtn.innerHTML = '↑';
+            scrollBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #00d4ff;
+                color: #1a1a1a;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+                cursor: pointer;
+                z-index: 999;
+                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+                transition: all 0.3s;
+            `;
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+            scrollBtn.addEventListener('mouseover', () => {
+                scrollBtn.style.background = '#0088cc';
+            });
+            scrollBtn.addEventListener('mouseout', () => {
+                scrollBtn.style.background = '#00d4ff';
+            });
+            document.body.appendChild(scrollBtn);
+        }
     } else {
-      prevSlide();
+        const btn = document.getElementById('scroll-to-top');
+        if (btn) btn.remove();
     }
-  }
-}, { passive: true });
+});
+
+// Analytics Log
+console.log('🚀 HAVENIS AI Website loaded successfully!');
+console.log('Current Language:', currentLang);
