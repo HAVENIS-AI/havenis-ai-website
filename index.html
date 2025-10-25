@@ -1,236 +1,171 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVENIS AI - Wi-Fi Sensing for Vital Monitoring</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAVENIS AI Pitchdeck</title>
+<link rel="stylesheet" href="/havenis-ai-website/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">HAVENIS AI</div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#mission" class="nav-link">Mission</a>
-                <a href="#technology" class="nav-link">Technology</a>
-                <a href="#team" class="nav-link">Team</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="language-toggle">
-                <button id="lang-de" class="lang-btn active">DE</button>
-                <button id="lang-en" class="lang-btn">EN</button>
-            </div>
-            <button class="menu-toggle" id="menu-toggle">☰</button>
-        </div>
-    </nav>
+<header>
+  <img src="/havenis-ai-website/images/havenis-logo.png" alt="HAVENIS AI Logo" class="logo">
+  <div class="lang-toggle">
+    <button id="de-btn">DE</button>
+    <button id="en-btn">EN</button>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 data-de="🚀 Revolutionäre Wi-Fi Sensing Technologie" data-en="🚀 Revolutionary Wi-Fi Sensing Technology">
-                🚀 Revolutionäre Wi-Fi Sensing Technologie
-            </h1>
-            <p class="subtitle" data-de="Kontaktlose Gesundheitsüberwachung mit Datenschutz an erster Stelle" 
-               data-en="Contactless Health Monitoring with Privacy First">
-                Kontaktlose Gesundheitsüberwachung mit Datenschutz an erster Stelle
-            </p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-de="Jetzt Kontakt aufnehmen" data-en="Get in Touch">
-                    Jetzt Kontakt aufnehmen
-                </button>
-                <button class="btn btn-secondary" onclick="exportToPDF()" data-de="PDF Herunterladen" data-en="Download PDF">
-                    📄 PDF Herunterladen
-                </button>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="wave-animation"></div>
-        </div>
-    </section>
+<main>
+  <!-- Slide 1 – Mission -->
+  <section class="slide" data-slide="1" id="slide-1">
+    <h1 class="slide-title" data-de="HAVENIS AI – Mission" data-en="HAVENIS AI – Mission">HAVENIS AI – Mission</h1>
+    <p data-de="Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring, Datenschutz-first." 
+       data-en="We revolutionize Wi-Fi sensing for vital monitoring, privacy-first.">
+       Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring, Datenschutz-first.
+    </p>
+  </section>
 
-    <!-- Mission Section -->
-    <section id="mission" class="section mission-section">
-        <div class="container">
-            <h2 data-de="Unsere Mission" data-en="Our Mission">Unsere Mission</h2>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="icon">🎯</div>
-                    <h3 data-de="Gesundheit" data-en="Health">Gesundheit</h3>
-                    <p data-de="Intelligente Vitalmonitoring Systeme für alle" data-en="Intelligent vital monitoring systems for everyone">
-                        Intelligente Vitalmonitoring Systeme für alle
-                    </p>
-                </div>
-                <div class="mission-card">
-                    <div class="icon">🔒</div>
-                    <h3 data-de="Datenschutz" data-en="Privacy">Datenschutz</h3>
-                    <p data-de="Keine Kameras, keine persönlichen Daten" data-en="No cameras, no personal data">
-                        Keine Kameras, keine persönlichen Daten
-                    </p>
-                </div>
-                <div class="mission-card">
-                    <div class="icon">⚡</div>
-                    <h3 data-de="Innovation" data-en="Innovation">Innovation</h3>
-                    <p data-de="Cutting-Edge Wi-Fi Sensing Technologie" data-en="Cutting-Edge Wi-Fi Sensing Technology">
-                        Cutting-Edge Wi-Fi Sensing Technologie
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Slide 2 – Problem -->
+  <section class="slide" data-slide="2" id="slide-2">
+    <h2 data-de="Problem" data-en="Problem">Problem</h2>
+    <p data-de="Herz- und Atemüberwachung ist aktuell invasiv und teuer." 
+       data-en="Heart and respiratory monitoring is currently invasive and expensive.">
+       Herz- und Atemüberwachung ist aktuell invasiv und teuer.
+    </p>
+  </section>
 
-    <!-- Technology Section -->
-    <section id="technology" class="section tech-section">
-        <div class="container">
-            <h2 data-de="Wie es funktioniert" data-en="How It Works">Wie es funktioniert</h2>
-            <div class="tech-diagram">
-                <div class="tech-step">
-                    <div class="step-number">1</div>
-                    <h3 data-de="Wi-Fi Signale" data-en="Wi-Fi Signals">Wi-Fi Signale</h3>
-                    <p data-de="Analysieren Sie Umwelt-Wi-Fi Signale" data-en="Analyze ambient Wi-Fi signals">
-                        Analysieren Sie Umwelt-Wi-Fi Signale
-                    </p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="tech-step">
-                    <div class="step-number">2</div>
-                    <h3 data-de="AI Processing" data-en="AI Processing">AI Processing</h3>
-                    <p data-de="Advanced ML-Algorithmen verarbeiten Daten" data-en="Advanced ML algorithms process data">
-                        Advanced ML-Algorithmen verarbeiten Daten
-                    </p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="tech-step">
-                    <div class="step-number">3</div>
-                    <h3 data-de="Vital Signs" data-en="Vital Signs">Vital Signs</h3>
-                    <p data-de="Präzise Gesundheitsmessungen" data-en="Accurate health measurements">
-                        Präzise Gesundheitsmessungen
-                    </p>
-                </div>
-            </div>
+  <!-- Slide 3 – Lösung -->
+  <section class="slide" data-slide="3" id="slide-3">
+    <h2 data-de="Lösung" data-en="Solution">Lösung</h2>
+    <p data-de="HAVENIS AI nutzt Wi-Fi Sensing & Edge-KI für kontaktlose Vitalüberwachung." 
+       data-en="HAVENIS AI uses Wi-Fi sensing & Edge-AI for contactless vital monitoring.">
+       HAVENIS AI nutzt Wi-Fi Sensing & Edge-KI für kontaktlose Vitalüberwachung.
+    </p>
+  </section>
 
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Hochgenau" data-en="High Accuracy">Hochgenau</h4>
-                    <p data-de="±2% Messgenauigkeit" data-en="±2% measurement accuracy">±2% Messgenauigkeit</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Echtzeit" data-en="Real-time">Echtzeit</h4>
-                    <p data-de="Live Vital Monitoring" data-en="Live vital monitoring">Live Vital Monitoring</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Skalierbar" data-en="Scalable">Skalierbar</h4>
-                    <p data-de="Für 1-1000 Personen" data-en="For 1-1000 people">Für 1-1000 Personen</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Sicher" data-en="Secure">Sicher</h4>
-                    <p data-de="End-to-End verschlüsselt" data-en="End-to-end encrypted">End-to-End verschlüsselt</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Slide 4 – Tech-Architektur -->
+  <section class="slide" data-slide="4" id="slide-4">
+    <h2 data-de="Tech-Architektur" data-en="Tech Architecture">Tech-Architektur</h2>
+    <canvas id="tech-canvas" width="800" height="400"></canvas>
+  </section>
 
-    <!-- Team Section -->
-    <section id="team" class="section team-section">
-        <div class="container">
-            <h2 data-de="Unser Team" data-en="Our Team">Unser Team</h2>
-            <p class="section-subtitle" data-de="Experten in KI, Telekommunikation und Healthcare" data-en="Experts in AI, Telecommunications and Healthcare">
-                Experten in KI, Telekommunikation und Healthcare
-            </p>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">👨‍💼</div>
-                    <h3>Co-Founder & CEO</h3>
-                    <p class="role" data-de="Vision & Strategie" data-en="Vision & Strategy">Vision & Strategie</p>
-                    <p class="bio" data-de="Führt HAVENIS mit innovativer Vision" data-en="Leads HAVENIS with innovative vision">
-                        Führt HAVENIS mit innovativer Vision
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👨‍🔬</div>
-                    <h3>CTO & Lead Engineer</h3>
-                    <p class="role" data-de="Technologie & Entwicklung" data-en="Technology & Development">Technologie & Entwicklung</p>
-                    <p class="bio" data-de="Entwickelt revolutionäre Wi-Fi Sensing" data-en="Develops revolutionary Wi-Fi sensing">
-                        Entwickelt revolutionäre Wi-Fi Sensing
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👩‍💻</div>
-                    <h3>AI/ML Specialist</h3>
-                    <p class="role" data-de="Machine Learning" data-en="Machine Learning">Machine Learning</p>
-                    <p class="bio" data-de="Intelligente Algorithmen für Präzision" data-en="Smart algorithms for precision">
-                        Intelligente Algorithmen für Präzision
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👨‍⚕️</div>
-                    <h3>Healthcare Advisor</h3>
-                    <p class="role" data-de="Medizinische Expertise" data-en="Medical Expertise">Medizinische Expertise</p>
-                    <p class="bio" data-de="Erfüllt medizinische Standards" data-en="Meets medical standards">
-                        Erfüllt medizinische Standards
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👩‍⚖️</div>
-                    <h3>Legal & Compliance</h3>
-                    <p class="role" data-de="Datenschutz & Regulierung" data-en="Privacy & Regulation">Datenschutz & Regulierung</p>
-                    <p class="bio" data-de="Navigiert Compliance erfolgreich" data-en="Navigates compliance successfully">
-                        Navigiert Compliance erfolgreich
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">🤝</div>
-                    <h3>Business Development</h3>
-                    <p class="role" data-de="Partnerschaften & Wachstum" data-en="Partnerships & Growth">Partnerschaften & Wachstum</p>
-                    <p class="bio" data-de="Strategische Kooperationen aufbauen" data-en="Build strategic partnerships">
-                        Strategische Kooperationen aufbauen
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Slide 5 – Datenfluss / KI-Modelle -->
+  <section class="slide" data-slide="5" id="slide-5">
+    <h2 data-de="Datenfluss / KI-Modelle" data-en="Data Flow / AI Models">Datenfluss / KI-Modelle</h2>
+    <p data-de="Edge-KI verarbeitet Sensordaten lokal, Cloud für Analyse & Reporting." 
+       data-en="Edge-AI processes sensor data locally, Cloud for analytics & reporting.">
+       Edge-KI verarbeitet Sensordaten lokal, Cloud für Analyse & Reporting.
+    </p>
+    <canvas id="heatmap-canvas" width="800" height="400"></canvas>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 data-de="Kontakt & Interesse" data-en="Contact & Interest">Kontakt & Interesse</h2>
-            <p class="section-subtitle" data-de="Lassen Sie uns zusammenarbeiten" data-en="Let's work together">
-                Lassen Sie uns zusammenarbeiten
-            </p>
-            <div class="contact-form">
-                <input type="text" id="name" placeholder="Name" data-de="Name" data-en="Name" />
-                <input type="email" id="email" placeholder="Email" data-de="Email" data-en="Email" />
-                <textarea id="message" placeholder="Nachricht" data-de="Nachricht" data-en="Message"></textarea>
-                <button class="btn btn-primary" onclick="sendMessage()" data-de="Nachricht senden" data-en="Send Message">
-                    Nachricht senden
-                </button>
-            </div>
-            <div class="contact-info">
-                <p data-de="Email: kontakt@havenis-ai.de" data-en="Email: contact@havenis-ai.de">
-                    📧 kontakt@havenis-ai.de
-                </p>
-                <p data-de="Folgen Sie uns für Updates" data-en="Follow us for updates">
-                    📱 Folgen Sie uns für Updates
-                </p>
-            </div>
-        </div>
-    </section>
+  <!-- Slide 6 – Use-Cases -->
+  <section class="slide" data-slide="6" id="slide-6">
+    <h2 data-de="Use-Cases" data-en="Use Cases">Use-Cases</h2>
+    <ul>
+      <li data-de="Pflegeheim Monitoring" data-en="Care Home Monitoring">Pflegeheim Monitoring</li>
+      <li data-de="Smart-Home Vital Tracking" data-en="Smart Home Vital Tracking">Smart-Home Vital Tracking</li>
+      <li data-de="Klinische Pilotprojekte" data-en="Clinical Pilot Projects">Klinische Pilotprojekte</li>
+    </ul>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p data-de="© 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie" 
-               data-en="© 2025 HAVENIS AI | Revolutionary Wi-Fi Sensing Technology">
-                © 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie
-            </p>
-        </div>
-    </footer>
+  <!-- Slide 7 – Markt & Trends -->
+  <section class="slide" data-slide="7" id="slide-7">
+    <h2 data-de="Markt & Trends" data-en="Market & Trends">Markt & Trends</h2>
+    <p data-de="Wachsender Markt für kontaktlose Vitalmessung, Privacy-first Lösungen im Fokus." 
+       data-en="Growing market for contactless vital monitoring, privacy-first solutions in focus.">
+       Wachsender Markt für kontaktlose Vitalmessung, Privacy-first Lösungen im Fokus.
+    </p>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Slide 8 – Businessmodell -->
+  <section class="slide" data-slide="8" id="slide-8">
+    <h2 data-de="Businessmodell" data-en="Business Model">Businessmodell</h2>
+    <p data-de="Hardware + SaaS-Lizenz für Pflegeeinrichtungen & Kliniken." 
+       data-en="Hardware + SaaS license for care facilities & clinics.">
+       Hardware + SaaS-Lizenz für Pflegeeinrichtungen & Kliniken.
+    </p>
+  </section>
+
+  <!-- Slide 9 – Proof-of-Concept -->
+  <section class="slide" data-slide="9" id="slide-9">
+    <h2 data-de="Proof-of-Concept" data-en="Proof-of-Concept">Proof-of-Concept</h2>
+    <p data-de="Erfolgreiche Pilotprojekte in 3 Pflegeheimen, präzise Messung von Herz- & Atemfrequenz." 
+       data-en="Successful pilots in 3 care homes, precise heart & respiratory measurement.">
+       Erfolgreiche Pilotprojekte in 3 Pflegeheimen, präzise Messung von Herz- & Atemfrequenz.
+    </p>
+  </section>
+
+  <!-- Slide 10 – KPIs -->
+  <section class="slide" data-slide="10" id="slide-10">
+    <h2 data-de="KPIs" data-en="KPIs">KPIs</h2>
+    <ul>
+      <li data-de="Pilotprojekte: 3" data-en="Pilot Projects: 3">Pilotprojekte: 3</li>
+      <li data-de="Messgenauigkeit Herz: ±2%" data-en="Heart Accuracy: ±2%">Messgenauigkeit Herz: ±2%</li>
+      <li data-de="Messgenauigkeit Atmung: ±3%" data-en="Respiration Accuracy: ±3%">Messgenauigkeit Atmung: ±3%</li>
+      <li data-de="Partner: Bosch, Charité, TU Berlin" data-en="Partners: Bosch, Charité, TU Berlin">Partner: Bosch, Charité, TU Berlin</li>
+      <li data-de="Funding: Pre-Seed 250k€, Seed Q1/2026" data-en="Funding: Pre-Seed €250k, Seed Q1/2026">Funding: Pre-Seed 250k€, Seed Q1/2026</li>
+    </ul>
+  </section>
+
+  <!-- Slide 11 – Roadmap -->
+  <section class="slide" data-slide="11" id="slide-11">
+    <h2 data-de="Roadmap" data-en="Roadmap">Roadmap</h2>
+    <ul>
+      <li data-de="2025: Produktfinalisierung & Pilotprojekte" data-en="2025: Product finalization & pilots">2025: Produktfinalisierung & Pilotprojekte</li>
+      <li data-de="2026: Skalierung & Partnerschaften" data-en="2026: Scaling & partnerships">2026: Skalierung & Partnerschaften</li>
+      <li data-de="2027+: Markteintritt international" data-en="2027+: International market entry">2027+: Markteintritt international</li>
+    </ul>
+  </section>
+
+  <!-- Slide 12 – Team & Partner -->
+  <section class="slide" data-slide="12" id="slide-12">
+    <h2 data-de="Team & Partner" data-en="Team & Partners">Team & Partner</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="/havenis-ai-website/images/dicker.png" alt="Dicker">
+        <h3 data-de="Dicker – CEO" data-en="Dicker – CEO">Dicker – CEO</h3>
+        <p data-de="Edge-KI-Strategie & Businessmodelle" data-en="Edge-AI Strategy & Business Models">Edge-KI-Strategie & Businessmodelle</p>
+      </div>
+      <div class="team-member">
+        <img src="/havenis-ai-website/images/amir.png" alt="Amir">
+        <h3 data-de="Amir – CTO" data-en="Amir – CTO">Amir – CTO</h3>
+        <p data-de="Signalverarbeitung & Embedded-KI" data-en="Signal Processing & Embedded-AI">Signalverarbeitung & Embedded-KI</p>
+      </div>
+      <div class="team-member">
+        <img src="/havenis-ai-website/images/lisa.png" alt="Lisa">
+        <h3 data-de="Lisa – Design Lead" data-en="Lisa – Design Lead">Lisa – Design Lead</h3>
+        <p data-de="UX & Data-Visualisierung" data-en="UX & Data Visualization">UX & Data-Visualisierung</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 – Investment -->
+  <section class="slide" data-slide="13" id="slide-13">
+    <h2 data-de="Investment" data-en="Investment">Investment</h2>
+    <p data-de="Wir suchen Seed-Investment, um 2026 die Skalierung zu starten." 
+       data-en="We are seeking seed investment to start scaling in 2026.">
+       Wir suchen Seed-Investment, um 2026 die Skalierung zu starten.
+    </p>
+  </section>
+
+  <!-- Slide 14 – Vision 2030 -->
+  <section class="slide" data-slide="14" id="slide-14">
+    <h2 data-de="Vision 2030" data-en="Vision 2030">Vision 2030</h2>
+    <p data-de="Weltweit kontaktlose Vitalüberwachung für Millionen Menschen – Privacy-first." 
+       data-en="Worldwide contactless vital monitoring for millions – privacy-first.">
+       Weltweit kontaktlose Vitalüberwachung für Millionen Menschen – Privacy-first.
+    </p>
+  </section>
+</main>
+
+<!-- Navigation -->
+<div class="nav-buttons">
+  <button id="prev-btn">← Zurück</button>
+  <button id="next-btn">Weiter →</button>
+  <button id="pdf-btn">📄 PDF & Export</button>
+</div>
+
+<script src="/havenis-ai-website/script.js"></script>
 </body>
 </html>
