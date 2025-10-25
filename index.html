@@ -3,211 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVENIS AI</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            line-height: 1.6;
-        }
-        header { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; 
-            padding: 40px; 
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        h1 { font-size: 2.5em; margin-bottom: 10px; }
-        .content { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 8px;
-            max-width: 1000px;
-            margin: 0 auto;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h2 { 
-            color: #667eea; 
-            margin: 30px 0 20px 0; 
-            font-size: 1.8em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-        p { margin: 10px 0; color: #333; }
-        .section { 
-            margin: 30px 0; 
-            padding: 20px; 
-            background: #f9f9f9; 
-            border-left: 4px solid #667eea; 
-            border-radius: 4px;
-        }
-        button { 
-            background: #667eea; 
-            color: white; 
-            padding: 12px 24px; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer;
-            margin: 10px 5px 10px 0;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
-        button:hover { background: #764ba2; }
-
-        /* Team Styles */
-        .team-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-        .team-member {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-            transition: transform 0.3s;
-        }
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-        .team-member h3 {
-            font-size: 1.3em;
-            margin: 15px 0 5px 0;
-        }
-        .team-member .role {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        .team-member .bio {
-            font-size: 0.85em;
-            line-height: 1.5;
-            opacity: 0.95;
-        }
-        .avatar {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        ul { margin-left: 20px; }
-        li { margin: 8px 0; }
-        .footer { 
-            text-align: center; 
-            margin-top: 40px; 
-            color: #999; 
-            font-size: 0.9em;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-    </style>
+    <title>HAVENIS AI - Wi-Fi Sensing for Vital Monitoring</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🚀 HAVENIS AI</h1>
-        <p>Wi-Fi Sensing für intelligentes Vitalmonitoring</p>
-    </header>
-
-    <div class="content">
-        <!-- Mission Section -->
-        <div class="section">
-            <h2>🎯 Mission</h2>
-            <p>Wir revolutionieren Wi-Fi Sensing für Vitalmonitoring mit Datenschutz an erster Stelle.</p>
-            <p>Kontaktlose Gesundheitsüberwachung ohne Kameras - nur mit Wi-Fi Signalen!</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">HAVENIS AI</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#mission" class="nav-link">Mission</a>
+                <a href="#technology" class="nav-link">Technology</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="language-toggle">
+                <button id="lang-de" class="lang-btn active">DE</button>
+                <button id="lang-en" class="lang-btn">EN</button>
+            </div>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
         </div>
+    </nav>
 
-        <!-- Was wir machen Section -->
-        <div class="section">
-            <h2>💡 Was wir machen</h2>
-            <ul>
-                <li>Innovative Wi-Fi Sensing Technologie</li>
-                <li>Datenschutz-fokussierte Lösungen</li>
-                <li>Intelligente Vitalmonitoring Systeme</li>
-                <li>Zuverlässige und sichere Technologie</li>
-                <li>Einfache Integration für Partner</li>
-            </ul>
-        </div>
-
-        <!-- Features Section -->
-        <div class="section">
-            <h2>🌟 Features</h2>
-            <p><strong>Kontaktlos:</strong> Keine Wearables oder Kameras erforderlich</p>
-            <p><strong>Datenschutz:</strong> Keine persönlichen Daten werden gesammelt</p>
-            <p><strong>Genau:</strong> Hochgenaue Vital-Messungen</p>
-            <p><strong>Überall:</strong> Funktioniert überall mit Wi-Fi</p>
-        </div>
-
-        <!-- Team Section -->
-        <h2>👥 Unser Team</h2>
-        <p style="margin-bottom: 20px;">HAVENIS AI wird von einem leidenschaftlichen Team von Experten gegründet:</p>
-
-        <div class="team-container">
-            <div class="team-member">
-                <div class="avatar">👨‍💼</div>
-                <h3>Co-Founder & CEO</h3>
-                <div class="role">Vision & Strategie</div>
-                <div class="bio">Führt HAVENIS mit innovativer Vision und unternehmerischem Spirit</div>
-            </div>
-
-            <div class="team-member">
-                <div class="avatar">👨‍🔬</div>
-                <h3>CTO & Lead Engineer</h3>
-                <div class="role">Technologie & Entwicklung</div>
-                <div class="bio">Entwickelt die revolutionäre Wi-Fi Sensing Technologie</div>
-            </div>
-
-            <div class="team-member">
-                <div class="avatar">👩‍💻</div>
-                <h3>AI/ML Specialist</h3>
-                <div class="role">Machine Learning</div>
-                <div class="bio">Entwickelt intelligente Algorithmen für präzise Messungen</div>
-            </div>
-
-            <div class="team-member">
-                <div class="avatar">👨‍⚕️</div>
-                <h3>Healthcare Advisor</h3>
-                <div class="role">Medizinische Expertise</div>
-                <div class="bio">Stellt sicher, dass unsere Lösung medizinische Standards erfüllt</div>
-            </div>
-
-            <div class="team-member">
-                <div class="avatar">👩‍⚖️</div>
-                <h3>Legal & Compliance</h3>
-                <div class="role">Datenschutz & Regulierung</div>
-                <div class="bio">Navigiert komplexe regulatorische Anforderungen</div>
-            </div>
-
-            <div class="team-member">
-                <div class="avatar">🤝</div>
-                <h3>Business Development</h3>
-                <div class="role">Partnerships & Growth</div>
-                <div class="bio">Baut strategische Partnerschaften auf und treibt Wachstum</div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-de="🚀 Revolutionäre Wi-Fi Sensing Technologie" data-en="🚀 Revolutionary Wi-Fi Sensing Technology">
+                🚀 Revolutionäre Wi-Fi Sensing Technologie
+            </h1>
+            <p class="subtitle" data-de="Kontaktlose Gesundheitsüberwachung mit Datenschutz an erster Stelle" 
+               data-en="Contactless Health Monitoring with Privacy First">
+                Kontaktlose Gesundheitsüberwachung mit Datenschutz an erster Stelle
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-de="Jetzt Kontakt aufnehmen" data-en="Get in Touch">
+                    Jetzt Kontakt aufnehmen
+                </button>
+                <button class="btn btn-secondary" onclick="exportToPDF()" data-de="PDF Herunterladen" data-en="Download PDF">
+                    📄 PDF Herunterladen
+                </button>
             </div>
         </div>
-
-        <!-- Kontakt Section -->
-        <div class="section" style="background: #e8f0fe; border-left-color: #667eea;">
-            <h2>📧 Kontakt & Interesse</h2>
-            <p>Interessiert an HAVENIS AI oder möchtest mehr über unsere Technologie erfahren?</p>
-            <button onclick="alert('Email: kontakt@havenis-ai.de\nWir freuen uns auf deine Nachricht!')">📧 Email senden</button>
-            <button onclick="alert('Besuche unsere Website für mehr Informationen!')">🌐 Website</button>
-            <button onclick="alert('Folge uns für Updates!')">📱 Social Media</button>
+        <div class="hero-visual">
+            <div class="wave-animation"></div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>© 2025 HAVENIS AI | Revolutionizing Health Monitoring with Wi-Fi Sensing</p>
-            <p>Made with ❤️ by the HAVENIS AI Team</p>
+    <!-- Mission Section -->
+    <section id="mission" class="section mission-section">
+        <div class="container">
+            <h2 data-de="Unsere Mission" data-en="Our Mission">Unsere Mission</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="icon">🎯</div>
+                    <h3 data-de="Gesundheit" data-en="Health">Gesundheit</h3>
+                    <p data-de="Intelligente Vitalmonitoring Systeme für alle" data-en="Intelligent vital monitoring systems for everyone">
+                        Intelligente Vitalmonitoring Systeme für alle
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">🔒</div>
+                    <h3 data-de="Datenschutz" data-en="Privacy">Datenschutz</h3>
+                    <p data-de="Keine Kameras, keine persönlichen Daten" data-en="No cameras, no personal data">
+                        Keine Kameras, keine persönlichen Daten
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">⚡</div>
+                    <h3 data-de="Innovation" data-en="Innovation">Innovation</h3>
+                    <p data-de="Cutting-Edge Wi-Fi Sensing Technologie" data-en="Cutting-Edge Wi-Fi Sensing Technology">
+                        Cutting-Edge Wi-Fi Sensing Technologie
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        console.log("🚀 HAVENIS AI Website aktiv!");
-    </script>
+    <!-- Technology Section -->
+    <section id="technology" class="section tech-section">
+        <div class="container">
+            <h2 data-de="Wie es funktioniert" data-en="How It Works">Wie es funktioniert</h2>
+            <div class="tech-diagram">
+                <div class="tech-step">
+                    <div class="step-number">1</div>
+                    <h3 data-de="Wi-Fi Signale" data-en="Wi-Fi Signals">Wi-Fi Signale</h3>
+                    <p data-de="Analysieren Sie Umwelt-Wi-Fi Signale" data-en="Analyze ambient Wi-Fi signals">
+                        Analysieren Sie Umwelt-Wi-Fi Signale
+                    </p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="tech-step">
+                    <div class="step-number">2</div>
+                    <h3 data-de="AI Processing" data-en="AI Processing">AI Processing</h3>
+                    <p data-de="Advanced ML-Algorithmen verarbeiten Daten" data-en="Advanced ML algorithms process data">
+                        Advanced ML-Algorithmen verarbeiten Daten
+                    </p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="tech-step">
+                    <div class="step-number">3</div>
+                    <h3 data-de="Vital Signs" data-en="Vital Signs">Vital Signs</h3>
+                    <p data-de="Präzise Gesundheitsmessungen" data-en="Accurate health measurements">
+                        Präzise Gesundheitsmessungen
+                    </p>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <h4 data-de="Hochgenau" data-en="High Accuracy">Hochgenau</h4>
+                    <p data-de="±2% Messgenauigkeit" data-en="±2% measurement accuracy">±2% Messgenauigkeit</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <h4 data-de="Echtzeit" data-en="Real-time">Echtzeit</h4>
+                    <p data-de="Live Vital Monitoring" data-en="Live vital monitoring">Live Vital Monitoring</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <h4 data-de="Skalierbar" data-en="Scalable">Skalierbar</h4>
+                    <p data-de="Für 1-1000 Personen" data-en="For 1-1000 people">Für 1-1000 Personen</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <h4 data-de="Sicher" data-en="Secure">Sicher</h4>
+                    <p data-de="End-to-End verschlüsselt" data-en="End-to-end encrypted">End-to-End verschlüsselt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <h2 data-de="Unser Team" data-en="Our Team">Unser Team</h2>
+            <p class="section-subtitle" data-de="Experten in KI, Telekommunikation und Healthcare" data-en="Experts in AI, Telecommunications and Healthcare">
+                Experten in KI, Telekommunikation und Healthcare
+            </p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Co-Founder & CEO</h3>
+                    <p class="role" data-de="Vision & Strategie" data-en="Vision & Strategy">Vision & Strategie</p>
+                    <p class="bio" data-de="Führt HAVENIS mit innovativer Vision" data-en="Leads HAVENIS with innovative vision">
+                        Führt HAVENIS mit innovativer Vision
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🔬</div>
+                    <h3>CTO & Lead Engineer</h3>
+                    <p class="role" data-de="Technologie & Entwicklung" data-en="Technology & Development">Technologie & Entwicklung</p>
+                    <p class="bio" data-de="Entwickelt revolutionäre Wi-Fi Sensing" data-en="Develops revolutionary Wi-Fi sensing">
+                        Entwickelt revolutionäre Wi-Fi Sensing
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3>AI/ML Specialist</h3>
+                    <p class="role" data-de="Machine Learning" data-en="Machine Learning">Machine Learning</p>
+                    <p class="bio" data-de="Intelligente Algorithmen für Präzision" data-en="Smart algorithms for precision">
+                        Intelligente Algorithmen für Präzision
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍⚕️</div>
+                    <h3>Healthcare Advisor</h3>
+                    <p class="role" data-de="Medizinische Expertise" data-en="Medical Expertise">Medizinische Expertise</p>
+                    <p class="bio" data-de="Erfüllt medizinische Standards" data-en="Meets medical standards">
+                        Erfüllt medizinische Standards
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍⚖️</div>
+                    <h3>Legal & Compliance</h3>
+                    <p class="role" data-de="Datenschutz & Regulierung" data-en="Privacy & Regulation">Datenschutz & Regulierung</p>
+                    <p class="bio" data-de="Navigiert Compliance erfolgreich" data-en="Navigates compliance successfully">
+                        Navigiert Compliance erfolgreich
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🤝</div>
+                    <h3>Business Development</h3>
+                    <p class="role" data-de="Partnerschaften & Wachstum" data-en="Partnerships & Growth">Partnerschaften & Wachstum</p>
+                    <p class="bio" data-de="Strategische Kooperationen aufbauen" data-en="Build strategic partnerships">
+                        Strategische Kooperationen aufbauen
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 data-de="Kontakt & Interesse" data-en="Contact & Interest">Kontakt & Interesse</h2>
+            <p class="section-subtitle" data-de="Lassen Sie uns zusammenarbeiten" data-en="Let's work together">
+                Lassen Sie uns zusammenarbeiten
+            </p>
+            <div class="contact-form">
+                <input type="text" id="name" placeholder="Name" data-de="Name" data-en="Name" />
+                <input type="email" id="email" placeholder="Email" data-de="Email" data-en="Email" />
+                <textarea id="message" placeholder="Nachricht" data-de="Nachricht" data-en="Message"></textarea>
+                <button class="btn btn-primary" onclick="sendMessage()" data-de="Nachricht senden" data-en="Send Message">
+                    Nachricht senden
+                </button>
+            </div>
+            <div class="contact-info">
+                <p data-de="Email: kontakt@havenis-ai.de" data-en="Email: contact@havenis-ai.de">
+                    📧 kontakt@havenis-ai.de
+                </p>
+                <p data-de="Folgen Sie uns für Updates" data-en="Follow us for updates">
+                    📱 Folgen Sie uns für Updates
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-de="© 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie" 
+               data-en="© 2025 HAVENIS AI | Revolutionary Wi-Fi Sensing Technology">
+                © 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
