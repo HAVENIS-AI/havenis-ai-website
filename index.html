@@ -1,79 +1,173 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HAVENIS-AI - Kontaktlose KI-Wahrnehmung</title>
-<meta name="description" content="Wi-Fi Sensing-KI erkennt Präsenz, Bewegung & Vitalmuster – kamera-frei, DSGVO-konform.">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAVENIS AI™ Founder Edition v2.0 - Optimized</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .text-gold { color: #FFD700; }
+        .border-gold { border-color: #FFD700; }
+        .bg-gold-dark { background-color: #CCAA00; }
+        .bg-graphit { background-color: #1a1a1a; }
+        .bg-graphit-light { background-color: #2a2a2a; }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        body { background-color: #111827; }
+        .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(255, 215, 0, 0.2);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderFinancialProjection();
+            renderTeamMembers();
+        });
+
+        function renderFinancialProjection() {
+            const data = [
+                { year: 2025, revenue: 0.8, color: "bg-red-700" },
+                { year: 2026, revenue: 4.5, color: "bg-orange-600" },
+                { year: 2027, revenue: 12.0, color: "bg-yellow-500" },
+                { year: 2028, revenue: 23.0, color: "bg-gold-dark" },
+            ];
+            const maxRevenue = 23.0;
+            const container = document.getElementById('financial-projection');
+            if (!container) return;
+            container.innerHTML = data.map(item => `
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-400 font-semibold w-16 text-right">${item.year}</span>
+                    <div class="flex-1 bg-gray-800 rounded-full h-8 overflow-hidden shadow-inner">
+                        <div class="h-full ${item.color} flex items-center justify-end px-3 rounded-full transition-all duration-1000 ease-out"
+                             style="width: ${((item.revenue / maxRevenue) * 100).toFixed(2)}%">
+                            <span class="text-sm font-bold text-gray-900">${item.revenue} M €</span>
+                        </div>
+                    </div>
+                    <span class="text-gold-dark font-bold text-lg w-16 text-left hidden md:block">${((item.revenue / maxRevenue) * 100).toFixed(0)}%</span>
+                </div>
+            `).join('');
+        }
+
+        function renderTeamMembers() {
+            const teamMembers = [
+                {
+                    name: "DANIEL KUSS",
+                    shortTitle: "Unsichtbarer Security Architect",
+                    title: "CEO & Co-Founder",
+                    experience: "8+ Jahre IoT Security & Privacy-by-Design",
+                    highlights: [
+                        "Senior Engineer: 5000+ Systeme skaliert",
+                        "Patent-holder: WiFi-basierte Detektion",
+                        "CCC Speaker & Open Source Contributor",
+                        "TU Berlin Dipl.-Informatiker + Security Certs"
+                    ],
+                    quote: "Technologie sollte Menschen schützen, nicht überwachen.",
+                    linkedIn: "daniel-kuss-havenis",
+                    imagePath: "https://via.placeholder.com/144/1a1a1a/FFD700?text=Daniel",
+                },
+                {
+                    name: "SARAH LE ROUX",
+                    shortTitle: "Growth & Scale Architect",
+                    title: "COO & Co-Founder",
+                    experience: "9+ Jahre Startup Scaling & Fundraising",
+                    highlights: [
+                        "€25M+ Fundraising | 12+ Strategic Partnerships",
+                        "Series A Lead @ Health-Tech: 3x Revenue Growth",
+                        "Board Observer & McKinsey Experience",
+                        "MBA HEC Paris | 4 Sprachen fließend"
+                    ],
+                    quote: "Skalierung beginnt mit Kultur. HAVENIS baut die richtige Kultur von Tag 1.",
+                    linkedIn: "sarah-leroux-havenis",
+                    imagePath: "https://via.placeholder.com/144/1a1a1a/FFD700?text=Sarah",
+                },
+            ];
+            const container = document.getElementById('team-members-container');
+            if (!container) return;
+            container.innerHTML = teamMembers.map(member => `
+                <div class="team-card bg-graphit-light p-8 rounded-2xl border border-gray-700 shadow-xl">
+                    <div class="text-center mb-6">
+                        <img src="${member.imagePath}" alt="${member.name}" class="w-36 h-36 rounded-full mx-auto mb-4 object-cover border-4 border-gold shadow-lg" />
+                    </div>
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-white">${member.name}</h3>
+                        <p class="text-gold font-semibold text-sm mb-1">${member.title}</p>
+                        <p class="text-sm text-gray-400 italic">${member.shortTitle}</p>
+                    </div>
+                    <div class="mb-4 pb-4 border-b border-gray-600">
+                        <p class="text-gold text-xs uppercase font-bold tracking-widest mb-2">Expertise</p>
+                        <p class="text-gray-300 text-sm">${member.experience}</p>
+                    </div>
+                    <div class="mb-4 pb-4 border-b border-gray-600">
+                        <p class="text-gold text-xs uppercase font-bold tracking-widest mb-2">Key Achievements</p>
+                        <ul class="text-gray-300 text-sm space-y-1">
+                            ${member.highlights.map(h => `<li class="flex items-start"><span class="text-gold mr-2">✓</span><span>${h}</span></li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="mb-4 pb-4 border-b border-gray-600">
+                        <p class="text-gold text-xs uppercase font-bold tracking-widest mb-2">Mission</p>
+                        <p class="text-gray-300 italic text-sm font-medium">"${member.quote}"</p>
+                    </div>
+                    <div class="text-center pt-2">
+                        <a href="https://linkedin.com/in/${member.linkedIn}" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-yellow-300 text-sm font-semibold">
+                            linkedin.com/in/${member.linkedIn}
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
 </head>
-<body>
-<header>
-<a href="#" class="logo">HAVENIS-AI</a>
-<nav class="main-nav">
-<a href="#why">Warum jetzt?</a>
-<a href="#tech">Technologie</a>
-<a href="#team">Team</a>
-<a href="#contact" class="btn-contact">Kontakt</a>
-</nav>
-</header>
-<section class="hero">
-<h1>KI, die wahrnimmt – ohne zu berühren</h1>
-<p>Kontaktlose Erkennung von Anwesenheit, Atmung und Bewegungsmustern – für Sicherheit, Pflege und Komfort.</p>
-<div class="hero-cta">
-<a href="#contact" class="btn btn-primary">Early Access</a>
-<a href="#tech" class="btn btn-secondary">Technologie</a>
-</div>
-</section>
-<section class="why-now" id="why">
-<h2>Warum jetzt?</h2>
-<div class="cards">
-<div class="card"><h3>Wi-Fi 6/7 + CSI</h3><p>Stabilere Metriken, hþhere Auflösung</p></div>
-<div class="card"><h3>Privacy-Shift</h3><p>Ablehnung von Kameras in Privaträumen</p></div>
-<div class="card"><h3>Edge-AI</h3><p>Lokale Echtzeit-Analyse</p></div>
-<div class="card"><h3>Kosten</h3><p>Kein dedizierter Sensor-Kauf</p></div>
-</div>
-</section>
-<section class="tech" id="tech">
-<h2>Wie Wi-Fi-Sensing funktioniert</h2>
-<div class="tech-steps">
-<div class="step"><h3>1. Signal-Erfassung</h3><p>Wi-Fi APs erfassen CSI-Daten kontinuierlich</p></div>
-<div class="step"><h3>2. Verarbeitung</h3><p>Edge-AI verarbeitet Daten in Echtzeit</p></div>
-<div class="step"><h3>3. Ergcbnisse</h3><p>Pr�senz-/Aktivitätserkennung vor Ort</p></div>
-</div>
-</section>
-<section class="team" id="team">
-<h2>Das Team</h2>
-<div class="team-grid">
-<div class="member">
-<img src="images/Danilo Kuss-CEO.jpg" alt="Danilo Kuss CEO" class="member-photo">
-<h3>Danilo Kuss</h3>
-<p>style="color:#00d4ff;font-weight:bold;">CEO & Gründer</p>
-</div>
-<div class="member">
-<img src="images/Lara Nguyen-COO.jpg" alt="Lara Nguyen COO" class="member-photo">
-<h3>Lara Nguyen</h3>
-<p style="color:#00d4ff;font-weight:bold;">COO</p>
-</div>
-<div class="member">
-<img src="images/Dr. Elias Kern-CTO.jpeg" alt="Dr. Elias Kern CTO" class="member-photo">
-<h3>Dr. Elias Kern</h3>
-<p style="color:#00d4ff;font-weight:bold;">CTO</p>
-</div>
-</div>
-</section>
-<section class="contact" id="contact">
-<h2>Kontakt & Early Access</h2>
-<p>Interessiert? Wir freuen uns auf Sie!</p>
-<div class="contact-methods" style="text-align:center;font-size:18px;margin:30px;">
-<p><strong>Email:</strong> HAVENIS-AI@web.de</p>
-<p><strong>Telefon:</strong> +49-3361-747868</p>
-<p><strong>Mobil:</strong> +49-15510-926776</p>
-</div>
-</section>
-<footer>
-<p style="text-align:center;margin:20px;color:#bbb;">&copy; 2024 HAVENIS-AI UG. Alle Rechte vorbehalten</p>
-</footer>
-<script src="script.js"></script>
+<body class="bg-gradient-to-b from-gray-950 to-[#1a1a1a] text-gray-100 font-sans">
+    <section class="flex flex-col items-center justify-center text-center py-32 md:py-48 px-6 bg-graphit shadow-2xl">
+        <div class="mb-10">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center text-gold">
+                <i data-lucide="layers" class="w-10 h-10"></i>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold text-gold tracking-tighter mb-4">HAVENIS AI™</h1>
+            <p class="text-xl md:text-2xl font-semibold text-gray-300 mb-2">Founder Edition v2.0 OPTIMIZED</p>
+        </div>
+        <p class="text-2xl md:text-4xl italic text-gray-400 max-w-4xl mx-auto">"sehen, wenn keiner etwas sieht."</p>
+        <p class="text-sm text-gray-500 mt-8">Mit professionellen Gründer-Biographien | Rube AI Optimized | Okt 2025</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 border-l-4 border-gold pl-4">Das Gründungsteam</h2>
+        <p class="text-lg text-gray-400 mb-12 max-w-3xl">Zwei Gründer mit 17+ Jahren Erfahrung in Sicherheit, Technologie und Geschäftsskalierung.</p>
+        <div id="team-members-container" class="grid md:grid-cols-2 gap-12"></div>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="text-4xl font-bold text-white mb-6 border-l-4 border-gold pl-4">Finanz-Projektion</h2>
+        <div class="bg-graphit-light p-8 rounded-xl shadow-xl">
+            <div id="financial-projection" class="space-y-4"></div>
+        </div>
+    </section>
+
+    <footer class="py-16 px-6 bg-graphit-light border-t-8 border-gold-dark">
+        <div class="max-w-3xl mx-auto text-center">
+            <h3 class="text-4xl font-bold text-white mb-8">Kontakt</h3>
+            <div class="text-lg text-gray-300 space-y-3">
+                <p><strong class="text-gold">HAVENIS-AI UG (i.Gr.)</strong></p>
+                <p>Damaschkeweg 1, 15517 Fürstenwalde</p>
+                <p>📧 <a href="mailto:HAVENIS-AI@web.de" class="text-gold hover:text-yellow-300">HAVENIS-AI@web.de</a></p>
+                <p>📞 +49 15510 926776</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
