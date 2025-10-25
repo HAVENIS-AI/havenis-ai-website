@@ -5,6 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAVENIS AI - Wi-Fi Sensing for Vital Monitoring</title>
     <link rel="stylesheet" href="/havenis-ai-website/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9fafb;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #f3f4f6;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-avatar {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .role {
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -14,7 +103,6 @@
             <div class="nav-links">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#mission" class="nav-link">Mission</a>
-                <a href="#technology" class="nav-link">Technology</a>
                 <a href="#team" class="nav-link">Team</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
@@ -22,13 +110,12 @@
                 <button id="lang-de" class="lang-btn active">DE</button>
                 <button id="lang-en" class="lang-btn">EN</button>
             </div>
-            <button class="menu-toggle" id="menu-toggle">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
+        <div class="container">
             <h1 data-de="🚀 Revolutionäre Wi-Fi Sensing Technologie" data-en="🚀 Revolutionary Wi-Fi Sensing Technology">
                 🚀 Revolutionäre Wi-Fi Sensing Technologie
             </h1>
@@ -36,102 +123,6 @@
                data-en="Contactless Health Monitoring with Privacy First">
                 Kontaktlose Gesundheitsüberwachung mit Datenschutz an erster Stelle
             </p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-de="Jetzt Kontakt aufnehmen" data-en="Get in Touch">
-                    Jetzt Kontakt aufnehmen
-                </button>
-                <button class="btn btn-secondary" onclick="exportToPDF()" data-de="PDF Herunterladen" data-en="Download PDF">
-                    📄 PDF Herunterladen
-                </button>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="wave-animation"></div>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section id="mission" class="section mission-section">
-        <div class="container">
-            <h2 data-de="Unsere Mission" data-en="Our Mission">Unsere Mission</h2>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="icon">🎯</div>
-                    <h3 data-de="Gesundheit" data-en="Health">Gesundheit</h3>
-                    <p data-de="Intelligente Vitalmonitoring Systeme für alle" data-en="Intelligent vital monitoring systems for everyone">
-                        Intelligente Vitalmonitoring Systeme für alle
-                    </p>
-                </div>
-                <div class="mission-card">
-                    <div class="icon">🔒</div>
-                    <h3 data-de="Datenschutz" data-en="Privacy">Datenschutz</h3>
-                    <p data-de="Keine Kameras, keine persönlichen Daten" data-en="No cameras, no personal data">
-                        Keine Kameras, keine persönlichen Daten
-                    </p>
-                </div>
-                <div class="mission-card">
-                    <div class="icon">⚡</div>
-                    <h3 data-de="Innovation" data-en="Innovation">Innovation</h3>
-                    <p data-de="Cutting-Edge Wi-Fi Sensing Technologie" data-en="Cutting-Edge Wi-Fi Sensing Technology">
-                        Cutting-Edge Wi-Fi Sensing Technologie
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section id="technology" class="section tech-section">
-        <div class="container">
-            <h2 data-de="Wie es funktioniert" data-en="How It Works">Wie es funktioniert</h2>
-            <div class="tech-diagram">
-                <div class="tech-step">
-                    <div class="step-number">1</div>
-                    <h3 data-de="Wi-Fi Signale" data-en="Wi-Fi Signals">Wi-Fi Signale</h3>
-                    <p data-de="Analysieren Sie Umwelt-Wi-Fi Signale" data-en="Analyze ambient Wi-Fi signals">
-                        Analysieren Sie Umwelt-Wi-Fi Signale
-                    </p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="tech-step">
-                    <div class="step-number">2</div>
-                    <h3 data-de="AI Processing" data-en="AI Processing">AI Processing</h3>
-                    <p data-de="Advanced ML-Algorithmen verarbeiten Daten" data-en="Advanced ML algorithms process data">
-                        Advanced ML-Algorithmen verarbeiten Daten
-                    </p>
-                </div>
-                <div class="arrow">→</div>
-                <div class="tech-step">
-                    <div class="step-number">3</div>
-                    <h3 data-de="Vital Signs" data-en="Vital Signs">Vital Signs</h3>
-                    <p data-de="Präzise Gesundheitsmessungen" data-en="Accurate health measurements">
-                        Präzise Gesundheitsmessungen
-                    </p>
-                </div>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Hochgenau" data-en="High Accuracy">Hochgenau</h4>
-                    <p data-de="±2% Messgenauigkeit" data-en="±2% measurement accuracy">±2% Messgenauigkeit</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Echtzeit" data-en="Real-time">Echtzeit</h4>
-                    <p data-de="Live Vital Monitoring" data-en="Live vital monitoring">Live Vital Monitoring</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Skalierbar" data-en="Scalable">Skalierbar</h4>
-                    <p data-de="Für 1-1000 Personen" data-en="For 1-1000 people">Für 1-1000 Personen</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✓</span>
-                    <h4 data-de="Sicher" data-en="Secure">Sicher</h4>
-                    <p data-de="End-to-End verschlüsselt" data-en="End-to-end encrypted">End-to-End verschlüsselt</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -149,7 +140,7 @@
                     </div>
                     <h3>Danilo Kuss</h3>
                     <p class="role" data-de="Chief Executive Officer (CEO)" data-en="Chief Executive Officer (CEO)">Chief Executive Officer (CEO)</p>
-                    <p class="bio" data-de="Führt HAVENIS mit innovativer Vision und strategischer Leitung" data-en="Leads HAVENIS with innovative vision and strategic direction">
+                    <p class="bio" data-de="Führt HAVENIS mit innovativer Vision" data-en="Leads HAVENIS with innovative vision">
                         Führt HAVENIS mit innovativer Vision
                     </p>
                 </div>
@@ -159,7 +150,7 @@
                     </div>
                     <h3>Dr. Elias Kern</h3>
                     <p class="role" data-de="Chief Technology Officer (CTO)" data-en="Chief Technology Officer (CTO)">Chief Technology Officer (CTO)</p>
-                    <p class="bio" data-de="Entwickelt revolutionäre Wi-Fi Sensing Technologie" data-en="Develops revolutionary Wi-Fi sensing technology">
+                    <p class="bio" data-de="Entwickelt revolutionäre Wi-Fi Sensing" data-en="Develops revolutionary Wi-Fi sensing">
                         Entwickelt revolutionäre Wi-Fi Sensing
                     </p>
                 </div>
@@ -169,64 +160,29 @@
                     </div>
                     <h3>Lara Nguyen</h3>
                     <p class="role" data-de="Chief Operating Officer (COO)" data-en="Chief Operating Officer (COO)">Chief Operating Officer (COO)</p>
-                    <p class="bio" data-de="Leitet Operationen und Geschäftsentwicklung" data-en="Leads operations and business development">
+                    <p class="bio" data-de="Leitet Operationen und Entwicklung" data-en="Leads operations and development">
                         Leitet Operationen und Entwicklung
                     </p>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">👨‍🔬</div>
-                    <h3>AI/ML Specialist</h3>
-                    <p class="role" data-de="Machine Learning Engineer" data-en="Machine Learning Engineer">Machine Learning Engineer</p>
-                    <p class="bio" data-de="Intelligente Algorithmen für Präzision" data-en="Smart algorithms for precision">
-                        Intelligente Algorithmen für Präzision
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👨‍⚕️</div>
-                    <h3>Healthcare Advisor</h3>
-                    <p class="role" data-de="Medical Expert" data-en="Medical Expert">Medical Expert</p>
-                    <p class="bio" data-de="Erfüllt medizinische Standards" data-en="Meets medical standards">
-                        Erfüllt medizinische Standards
-                    </p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">👩‍⚖️</div>
-                    <h3>Legal & Compliance</h3>
-                    <p class="role" data-de="Compliance Officer" data-en="Compliance Officer">Compliance Officer</p>
-                    <p class="bio" data-de="Navigiert Compliance erfolgreich" data-en="Navigates compliance successfully">
-                        Navigiert Compliance erfolgreich
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <id="contact" class="section contact-section">
-        <div class="container">
-            <h2 data-de="Kontakt & Interesse" data-en="Contact & Interest">Kontakt & Interesse</h2>
-            <p class="section-subtitle" data-de="Lassen Sie uns zusammenarbeiten" data-en="Let's work together">
-                Lassen Sie uns zusammenarbeiten
-            </p>
-            <div class="contact-form">
-                <input type="text" id="name" placeholder="Name" />
-                <input type="email" id="email" placeholder="Email" />
-                <textarea id="message" placeholder="Nachricht"></textarea>
-                <button class="btn btn-primary" onclick="sendMessage()">
-                    Nachricht senden
-                </button>
-            </div>
-            <div class="contact-info">
-                <p>📧 kontakt@havenis-ai.de</p>
-                <p>📱 Folgen Sie uns für Updates</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <p>© 2025 HAVENIS AI | Revolutionäre Wi-Fi Sensing Technologie</p>
+            <h2 data-de="Kontakt" data-en="Contact">Kontakt</h2>
+            <p data-de="Kontaktieren Sie uns für mehr Informationen" data-en="Contact us for more information">
+                Kontaktieren Sie uns für mehr Informationen
+            </p>
+            <form onsubmit="event.preventDefault(); sendMessage();" style="max-width: 500px; margin: 40px auto;">
+                <input type="text" id="name" placeholder="Name" data-de="Name" data-en="Name" required />
+                <input type="email" id="email" placeholder="Email" data-de="Email" data-en="Email" required />
+                <textarea id="message" rows="5" placeholder="Nachricht" data-de="Nachricht" data-en="Message" required></textarea>
+                <button type="submit" class="btn btn-primary" data-de="Senden" data-en="Send">Senden</button>
+            </form>
         </div>
-    </footer>
+    </section>
 
     <script src="/havenis-ai-website/script.js"></script>
 </body>
